@@ -3,7 +3,13 @@
 
 body {
   font-family: 'Mukta', sans-serif;
-  background: #0c0d13 ;
+   background-image: url('2.png');
+
+    /* You can specify additional properties to control the appearance and behavior of the background image */
+    background-size: cover; /* Controls how the image is sized within the element */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center center; 
+/*   background: #0c0d13 ; */
   overflow: hidden;
 }
 
