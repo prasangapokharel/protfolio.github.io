@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200&family=Teko:wght@300&family=Tektur:wght@500&display=swap');
 
 body {
-  font-family: "Overpass", sans-serif;
+  font-family: 'Mukta', sans-serif;
   background: #0c0d13 ;
   overflow: hidden;
 }
