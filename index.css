@@ -29,7 +29,7 @@ ul li{
     color: aliceblue;
 
 }
-navbar-expand-lg.bg-primary{
+.navbar-expand-lg.bg-primary{
     background-color: #000000;
 }
 
@@ -98,6 +98,7 @@ h3 {
     display: inline-block;
     padding: 10px 20px;
     margin-top: 20px;
+    
     font-size: 16px;
     text-align: center;
     text-decoration: none;
@@ -113,7 +114,12 @@ h3 {
 
 .btn{
     margin-top: 20px;
-    gap: 10px;
+    
+    gap: 40px;
+}
+.btn-primary{
+    margin-left: 20px;
+    
 }
 .btn.btn-success{
     background-color: #3498db;
@@ -193,8 +199,8 @@ p {
     line-height: 1.6;
 }
 .view img{
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
 
 }
 
@@ -283,3 +289,77 @@ footer p {
     margin-right: 5px;
     margin-bottom: 30px;
 }
+
+.ido{
+    margin-top: 100px;
+}
+.card-img-top{
+    display: block;
+    gap: 10px;
+    border: 2px solid;
+    border-radius: 20px;
+    padding: 10px;
+    
+}
+.card-img-top img{
+    
+}
+
+
+
+@keyframes lights {
+    /* 0% {
+      color: hsl(230, 40%, 80%);
+      text-shadow:
+        0 0 1em hsla(224, 100%, 50%, 0.2),
+        0 0 0.125em hsla(236, 100%, 60%, 0.3),
+        -1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+        1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+    } */
+/*     
+    30% { 
+      color: hsl(230, 80%, 90%);
+      text-shadow:
+        0 0 1em hsla(235, 100%, 50%, 0.5),
+        0 0 0.125em hsla(225, 100%, 60%, 0.5),
+        -0.5em -0.125em 0.25em hsla(241, 100%, 60%, 0.2),
+        0.5em 0.125em 0.25em hsla(233, 100%, 60%, 0.4);
+    } */
+    
+    40% { 
+      color: hsl(230, 100%, 95%);
+      text-shadow:
+        0 0 1em hsla(226, 97%, 42%, 0.5),
+        0 0 0.125em hsla(243, 85%, 31%, 0.5),
+        -0.25em -0.125em 0.125em hsla(233, 100%, 60%, 0.2),
+        0.25em 0.125em 0.125em hsla(237, 100%, 60%, 0.4);
+    }
+    
+    70% {
+      color: hsl(230, 80%, 90%);
+      text-shadow:
+        0 0 1em hsla(228, 100%, 50%, 0.5),
+        0 0 0.125em hsla(231, 100%, 60%, 0.5),
+        0.5em -0.125em 0.25em hsla(232, 100%, 60%, 0.2),
+        -0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+    }
+    
+    /* 100% {
+      color: hsl(230, 40%, 80%);
+      text-shadow:
+        0 0 1em hsla(243, 100%, 50%, 0.2),
+        0 0 0.125em hsla(244, 100%, 60%, 0.3),
+        1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+        -1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+    } */
+    
+  }
+  
+
+  
+  .content h2 {
+    margin: auto;
+    font-size: 3.5rem;
+    font-weight: 300;
+    animation: lights 5s 750ms linear infinite;
+  }
