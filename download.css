@@ -1,0 +1,30 @@
+/* your-styles.css */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #3498db; /* Your desired color */
+}
+
+.download-options {
+    display: flex;
+    gap: 15px;
+}
+
+a {
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+a:hover {
+    background-color: #297fb8; /* Darker shade on hover */
+}
