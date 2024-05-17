@@ -71,9 +71,38 @@
                             <div class="progress" data-percentage="75%"></div>
                         </div>
                     </div>
+
                 </section>
             </div>
-
+            <section class="slider-container">
+                <div class="slider" id="slider">
+                    <div class="slide">
+                        <img src="https://imgs.search.brave.com/nTIg50OP8069MR2KJ0S1sIMnhgBSf4E5SZcl0hCWUjI/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jeWJl/cmNoaW1wcy5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMjMv/MTAvV0lYLndlYnA" alt="Project 1">
+                        <div class="slide-caption">
+                            <h3>Title 1</h3>
+                            <p>Description for Project 1</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://imgs.search.brave.com/nTIg50OP8069MR2KJ0S1sIMnhgBSf4E5SZcl0hCWUjI/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jeWJl/cmNoaW1wcy5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMjMv/MTAvV0lYLndlYnA" alt="Project 2">
+                        <div class="slide-caption">
+                            <h3>Title 2</h3>
+                            <p>Description for Project 2</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://imgs.search.brave.com/nTIg50OP8069MR2KJ0S1sIMnhgBSf4E5SZcl0hCWUjI/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jeWJl/cmNoaW1wcy5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMjMv/MTAvV0lYLndlYnA" alt="Project 3">
+                        <div class="slide-caption">
+                            <h3>Title 3</h3>
+                            <p>Description for Project 3</p>
+                        </div>
+                    </div>
+                    <!-- Add more slides as needed -->
+                </div>
+            </section>
+            
+            
+            
             <section class="expertise-section">
                 <div class="expertise-card">
                     <i class="fas fa-paint-brush"></i>
@@ -108,6 +137,28 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/min/tiny-slider.js"></script>
+<script>
+    var slider = tns({
+        container: '#slider',
+        items: 1,
+        slideBy: 'page',
+        autoplay: true,
+        autoplayButtonOutput: false,
+        mouseDrag: true,
+        nav: false,
+        controlsContainer: false,
+        loop: true,
+        speed: 1000,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        controlsText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],
+    });
+
+    // Add class to slider for automatic sliding
+    var sliderElement = document.getElementById('slider');
+    sliderElement.classList.add('auto');
+</script>
+
 </body>
 </html>
