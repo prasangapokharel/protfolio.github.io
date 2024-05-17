@@ -3,160 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mine Tools</title>
+    <title>CV Template</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+        /* General Styles */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #060818;
+            font-family: "Anonymous Pro", monospace;
+            line-height: 1.6;
+            background-color: #ffffff;
             margin: 0;
             padding: 0;
-            color: #fff;
         }
-
-        header {
-            background-color: #0d111b;
-            padding: 20px 0;
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 0px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
-        .navbar-brand {
-            color: #fff !important;
-            font-size: 24px;
-            font-weight: bold;
+        .profile-img-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 20px;
         }
-
-        .navbar-nav .nav-link {
-            color: #fff !important;
-            font-size: 18px;
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
             margin-right: 20px;
         }
-
-        .navbar-nav .nav-link:hover {
-            color: #bbb !important;
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #000000;
         }
-
-        .tool-section {
-            padding: 50px 0;
-            text-align: center;
+        .section {
+            margin-bottom: 30px;
         }
+        .section-header {
+            color: #007bff;
 
-        .tool-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-        }
-
-        .tool-card {
-            background-color: #292e42;
-            color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            width: 300px;
-            transition: all 0.3s ease;
-        }
-
-        .tool-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .tool-card i {
-            font-size: 48px;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .tool-card h3 {
-            font-size: 24px;
+            font-size: 1.5rem;
+            font-weight: bold;
             margin-bottom: 10px;
         }
-
-        .tool-card p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
-
-        footer {
-            background-color: #0d111b;
-            color: #fff;
-            text-align: center;
-            padding: 20px 0;
-            position: fixed;
-            bottom: 0;
-            left: 0;
+        table {
             width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            text-align: left;
+        }
+        .divider {
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+        .contact-logo {
+            font-size: 24px;
+            margin-right: 10px;
+            vertical-align: middle;
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Mine Tools</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarColor01">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Tools</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <section class="tool-section">
-        <div class="container">
-            <div class="tool-container">
-                <a href="http://homeworkprp.000.pe/">
-                    <div class="tool-card">
-                        <i class="fas fa-book"></i>
-                        <h3>Homework Note</h3>
-                        <p>Get assistance with your homework assignments.</p>
-                    </div>
-                </a>
-                
-
-               <a href="http://proteintracker.great-site.net/">
-                <div class="tool-card">
-                <i class="fas fa-dumbbell"></i>
-                <h3>Protein Tracker</h3>
-                <p>Track your daily protein intake for a healthier lifestyle.</p>
-            </div>
-        </a>
-
-               <a href="http://blackrock.rf.gd/?i=1">
-                <div class="tool-card">
-                <i class="far fa-images"></i>
-                <h3>JPG to PNG Converter</h3>
-                <p>Convert your JPG images to PNG format effortlessly.</p>
-                </div>
-                </a>
-                <div class="tool-card">
-                    <i class="fas fa-calculator"></i>
-                    <h3>Math Solver</h3>
-                    <p>Solve complex mathematical problems with ease.</p>
-                </div>
+    <div class="container">
+        <div class="profile-section section">
+            <div class="profile-img-container">
+                <img src="prof.svg" alt="Profile Image" class="profile-img">
+                <div class="profile-name">Prasanga Raman Pokharel</div>
             </div>
         </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Prasanga Tech. All rights reserved.</p>
+        <div class="main-section">
+            <div class="skills section">
+                <h2 class="section-header">Skills</h2>
+                <table>
+                    <tr>
+                        <td>Web Designer</td>
+                        <td>Full Stack Developer</td>
+                    </tr>
+                    <tr>
+                        <td>Email Scrapping</td>
+                        <td>Digital Marketing</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">SMM (Social Media Marketing)</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="languages section">
+                <h2 class="section-header">Language Knowledge</h2>
+                <table>
+                    <tr>
+                        <td>HTML</td>
+                        <td>CSS</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript</td>
+                        <td>C</td>
+                    </tr>
+                    <tr>
+                        <td>PHP</td>
+                        <td>Python</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">WordPress</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">SE (Search Engine Optimization)</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="qualifications section">
+                <h2 class="section-header">Qualification</h2>
+                <table>
+                    <tr>
+                        <td>+2 in Computer Science</td>
+                        <td>Status: Completed</td>
+                    </tr>
+                    <tr>
+                        <td>Bachelor in Computer Application</td>
+                        <td>Status: Progress</td>
+                    </tr>
+                </table>
+            </div>
         </div>
-    </footer>
-
+        <div class="location section">
+            <h2 class="section-header">Location</h2>
+            <p><strong>Permanent Address:</strong> Inaruwa1, Sunsari, Nepal</p>
+            <p><strong>Province:</strong> 1</p>
+            <p><strong>Zone:</strong> Koshi</p>
+        </div>
+        <div class="contact section">
+            <h2 class="section-header">Contact Details</h2>
+            <p><i class="fas fa-map-marker-alt contact-logo"></i> Inaruwa1, Sunsari, Nepal</p>
+            <p><i class="fas fa-phone contact-logo"></i> 9765470926</p>
+            <p><i class="fas fa-envelope contact-logo"></i> prasangaramanpokharel@gmail.com</p>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
 </body>
 </html>
