@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&display=swap">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="index.css">
@@ -15,7 +14,7 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Prasangapokharel.com.np</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarColor01">
@@ -29,13 +28,15 @@
 
     <section class="professional-section">
         <div class="content">
-            <img src="prof.svg">
+            <div class="profile-img-container">
+                <img src="prof.svg" class="profile-img" alt="Profile Image">
+            </div>
             <h2>I am prasanga</h2>
-            <p>I am a dedicated professional with 2 years of experience as a Frontend Designer. Proficient in Python, Bootstrap, C, C++, JavaScript, and Node.js.</p>
+            <p id="typing-text">I am a dedicated professional with 2 years of experience as a Frontend Designer. Proficient in Python, Bootstrap, C, C++, JavaScript, Php</p>
 
             <div class="click">
                 <button type="button" class="btn btn-primary">
-                    <a href="tools.html">Contact Me to Make Website</a>
+                    <a href="https://www.facebook.com/prasangapokharel?mibextid=LQQJ4d ">Contact Me to Make Website</a>
                 </button>
                 <button type="button" class="btn btn-primary">
                     <a href="https://github.com/prasangapokharel">Github</a>
@@ -64,18 +65,58 @@
                             <div class="progress" data-percentage="85%"></div>
                         </div>
                     </div>
-
-                    <div class="programming-language">
-                        <i class="fab fa-node"></i> Node.js
-                        <div class="progress-bar">
-                            <div class="progress" data-percentage="75%"></div>
-                        </div>
-                    </div>
-
                 </section>
             </div>
-          
-            
+
+            <section class="qualification-section">
+                <h2>Qualifications</h2>
+
+                <div class="qualification-item">
+                    <p>
+                        <a id="qf" class="btn btn-primary btn-sm" data-toggle="collapse" href="#schoolCollapse" role="button" aria-expanded="false" aria-controls="schoolCollapse">
+                            School
+                        </a>
+                    </p>
+                    <div class="collapse" id="schoolCollapse">
+                        <div class="card card-body">
+                            <strong>Name:</strong> Our English Boarding School<br>
+                            <strong>Completed on:</strong> 2019 AD<br>
+                            <strong>Status:</strong> Finished
+                        </div>
+                    </div>
+                </div>
+
+                <div class="qualification-item">
+                    <p>
+                        <a id="qf" class="btn btn-primary btn-sm" data-toggle="collapse" href="#higherSchoolCollapse" role="button" aria-expanded="false" aria-controls="higherSchoolCollapse">
+                            Higher School
+                        </a>
+                    </p>
+                    <div  class="collapse" id="higherSchoolCollapse">
+                        <div class="card card-body">
+                            <strong>Name:</strong> Merryland Higher Secondary<br>
+                            <strong>Completed:</strong> +2 at 2021-2022 AD<br>
+                            <strong>Status:</strong> Finished
+                        </div>
+                    </div>
+                </div>
+
+                <div class="qualification-item">
+                    <p>
+                        <a id="qf" class="btn btn-primary btn-sm" data-toggle="collapse" href="#bachelorCollapse" role="button" aria-expanded="false" aria-controls="bachelorCollapse">
+                            Bachelor
+                        </a>
+                    </p>
+                    <div class="collapse" id="bachelorCollapse">
+                        <div class="card card-body">
+                            <strong>Name:</strong> Itahati Namuna College<br>
+                            <strong>Course:</strong> BCA (Bachelor in Computer Application)<br>
+                            <strong>Status:</strong> Running
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section class="expertise-section">
                 <div class="expertise-card">
                     <i class="fas fa-paint-brush"></i>
@@ -110,28 +151,31 @@
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/min/tiny-slider.js"></script>
-<script>
-    var slider = tns({
-        container: '#slider',
-        items: 1,
-        slideBy: 'page',
-        autoplay: true,
-        autoplayButtonOutput: false,
-        mouseDrag: true,
-        nav: false,
-        controlsContainer: false,
-        loop: true,
-        speed: 1000,
-        autoplayTimeout: 3000,
-        autoplayHoverPause: true,
-        controlsText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],
-    });
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Function to create typing effect
+        function typeEffect(element, speed) {
+            const text = element.innerHTML;
+            element.innerHTML = "";
 
-    // Add class to slider for automatic sliding
-    var sliderElement = document.getElementById('slider');
-    sliderElement.classList.add('auto');
-</script>
+            let i = 0;
+            const typingInterval = setInterval(() => {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typingInterval);
+                }
+            }, speed);
+        }
 
+        // Typing effect configuration
+        const typingSpeed = 50; // Speed in milliseconds
+        const typingParagraph = document.getElementById('typing-text');
+
+        // Activate typing effect
+        typeEffect(typingParagraph, typingSpeed);
+    </script>
 </body>
 </html>
