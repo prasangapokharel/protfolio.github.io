@@ -201,56 +201,7 @@ img.profile-img {
     margin-bottom: 40px;
 }
 
-/* Slider Styling */
-.slider-container {
-    overflow: hidden;
-    padding: 30px 0;
-    text-align: center;
-}
 
-.slider {
-    display: flex;
-    gap: 20px; /* Adjust the gap between slides */
-    overflow: hidden;
-}
-
-.slide {
-    flex: 1;
-    position: relative;
-    height: 300px; /* Adjust the height of each slide */
-    overflow: hidden;
-    border-radius: 10px;
-    transition: transform 0.5s ease;
-}
-
-.slide img {
-    width: 80%;
-    height: 80%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-    border-radius: 10px;
-}
-
-.slide:hover img {
-    transform: scale(1.1);
-}
-
-.slide-caption {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    background-color: rgba(255, 254, 254, 0.7);
-    color: #fff;
-    padding: 0px;
-    border-radius: 5px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.slide:hover .slide-caption {
-    opacity: 1;
-}
 #qf{
     width: 100%;
 }
@@ -260,13 +211,61 @@ img.profile-img {
 .rse{
     text-decoration: none;
     text-align: center;
-}
-.card{
+} 
+.proj {
+    display: flex;
     gap: 20px;
-    display: flex;
-}
-.proj{
-    display: flex;
     justify-content: space-between;
-    margin: 5% auto;
+    margin: auto;
+    flex-wrap: wrap; /* Cards wrap to the next line on smaller screens */
+}
+
+.card {
+    width: 25rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Move card up on hover */
+}
+
+.card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: cover;
+    height: 200px; /* Adjust based on your design */
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+}
+
+.card-text {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+}
+
+@media (max-width: 676px) {
+    .card {
+        width: 100%; /* Full width for smaller screens */
+    }
 }
