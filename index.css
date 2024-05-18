@@ -45,6 +45,7 @@ header {
     color: #343a40;
 }
 
+
 .content p {
     font-size: 18px;
     line-height: 1.6;
@@ -259,4 +260,13 @@ img.profile-img {
 .rse{
     text-decoration: none;
     text-align: center;
+}
+.card{
+    gap: 20px;
+    display: flex;
+}
+.proj{
+    display: flex;
+    justify-content: space-between;
+    margin: 5% auto;
 }
