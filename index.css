@@ -85,7 +85,7 @@ header {
 }
 
 .programming-language {
-    background-color: #ffffff;
+    background-color: transparent;
     color: #343a40;
     padding: 20px;
     border-radius: 10px;
@@ -131,13 +131,14 @@ header {
 }
 
 .expertise-card {
-    background-color: #f8f9fa;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    transition: transform 0.3s ease;
     color: #343a40;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 4px;
     text-align: center;
     width: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 5% auto;
 }
 
 .expertise-card i {
@@ -203,7 +204,8 @@ img.profile-img {
 
 
 #qf{
-    width: 100%;
+    width: 60%;
+    border-radius: 4px;
 }
 .qualification-section{
     margin: 90px auto;
@@ -214,16 +216,17 @@ img.profile-img {
 } 
 .proj {
     display: flex;
-    gap: 20px;
-    justify-content: space-between;
-    margin: auto;
+    gap: 40px;
+    justify-content: stretch;
+    margin: 5% 15%;
     flex-wrap: wrap; /* Cards wrap to the next line on smaller screens */
 }
 
 .card {
-    width: 25rem;
+
+    width: 100%;
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 4px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
     transition: transform 0.3s ease; /* Smooth hover effect */
     margin-bottom: 20px;
