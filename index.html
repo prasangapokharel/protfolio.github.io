@@ -8,149 +8,188 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="index.css">
+    <style>
+        /* Hide content by default */
+        #content {
+            display: none;
+        }
+
+        /* Loading overlay */
+        .loading-overlay {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            z-index: 1050; /* Ensure overlay is on top of everything else */
+        }
+
+        .loading-overlay-content {
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Prasangapokharel.com.np</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarColor01">
-                    <ul class="navbar-nav mr-auto">
-                        <!-- Add any additional nav items here -->
-                    </ul>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-overlay-content">
+            <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div id="content">
+        <header>
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Prasangapokharel.com.np</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarColor01">
+                        <ul class="navbar-nav mr-auto">
+                            <!-- Add any additional nav items here -->
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
+            </nav>
+        </header>
 
-    <section class="professional-section">
-        <div class="content">
-            <div class="profile-img-container">
-                <img src="prof.svg" class="profile-img" alt="Profile Image">
-            </div>
-            <a class="rse" href="tools.html">view resume</a>
-            <h2>I am prasanga</h2>
-            <p id="typing-text">I am a dedicated professional with 2 years of experience as a Frontend Designer. Proficient in Python, Bootstrap, C, C++, JavaScript, Php </p>
+        <section class="professional-section">
+            <div class="content">
+                <div class="profile-img-container">
+                    <img src="prof.svg" class="profile-img" alt="Profile Image">
+                </div>
+                <a class="rse" href="tools.html">view resume</a>
+                <h2>I am prasanga</h2>
+                <p id="typing-text">I am a dedicated professional with 2 years of experience as a Frontend Designer. Proficient in Python, Bootstrap, C, C++, JavaScript, Php </p>
 
-            <div class="click">
-                <button type="button" class="btn btn-primary">
-                    <a href="https://www.facebook.com/prasangapokharel?mibextid=LQQJ4d ">Contact Me to Make Website</a>
-                </button>
-                <button type="button" class="btn btn-primary">
-                    <a href="https://github.com/prasangapokharel">Github</a>
-                </button>
-            </div>
+                <div class="click">
+                    <button type="button" class="btn btn-primary">
+                        <a href="https://www.facebook.com/prasangapokharel?mibextid=LQQJ4d ">Contact Me to Make Website</a>
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        <a href="https://github.com/prasangapokharel">Github</a>
+                    </button>
+                </div>
 
-            <div class="skills">
-                <section class="programming-section">
-                    <div class="programming-language">
-                        <i class="fab fa-python"></i> Python
-                        <div class="progress-bar">
-                            <div class="progress" data-percentage="80%"></div>
+                <div class="skills">
+                    <section class="programming-section">
+                        <div class="programming-language">
+                            <i class="fab fa-python"></i> Python
+                            <div class="progress-bar">
+                                <div class="progress" data-percentage="80%"></div>
+                            </div>
+                        </div>
+
+                        <div class="programming-language">
+                            <i class="fas fa-c"></i> C
+                            <div class="progress-bar">
+                                <div class="progress" data-percentage="60%"></div>
+                            </div>
+                        </div>
+
+                        <div class="programming-language">
+                            <i class="fab fa-js"></i> JavaScript
+                            <div class="progress-bar">
+                                <div class="progress" data-percentage="85%"></div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <section class="qualification-section">
+                    <h2>Qualifications</h2>
+
+                    <div class="qualification-item">
+                        <p>
+                            <a id="qf" class="btn btn-primary btn-sm" data-toggle="collapse" href="#schoolCollapse" role="button" aria-expanded="false" aria-controls="schoolCollapse">
+                                School
+                            </a>
+                        </p>
+                        <div class="collapse" id="schoolCollapse">
+                            <div class="card card-body">
+                                <strong>Name:</strong> Our English Boarding School<br>
+                                <strong>Completed on:</strong> 2019 AD<br>
+                                <strong>Status:</strong> Finished
+                            </div>
                         </div>
                     </div>
 
-                    <div class="programming-language">
-                        <i class="fas fa-c"></i> C
-                        <div class="progress-bar">
-                            <div class="progress" data-percentage="60%"></div>
+                    <div class="qualification-item">
+                        <p>
+                            <a id="qf" class="btn btn-primary btn-sm" data-toggle="collapse" href="#higherSchoolCollapse" role="button" aria-expanded="false" aria-controls="higherSchoolCollapse">
+                                Higher School
+                            </a>
+                        </p>
+                        <div  class="collapse" id="higherSchoolCollapse">
+                            <div class="card card-body">
+                                <strong>Name:</strong> Merryland Higher Secondary<br>
+                                <strong>Completed:</strong> +2 at 2021-2022 AD<br>
+                                <strong>Status:</strong> Finished
+                            </div>
                         </div>
                     </div>
 
-                    <div class="programming-language">
-                        <i class="fab fa-js"></i> JavaScript
-                        <div class="progress-bar">
-                            <div class="progress" data-percentage="85%"></div>
+                    <div class="qualification-item">
+                        <p>
+                            <a id="qf" class="btn btn-primary btn-sm" data-toggle="collapse" href="#bachelorCollapse" role="button" aria-expanded="false" aria-controls="bachelorCollapse">
+                                Bachelor
+                            </a>
+                        </p>
+                        <div class="collapse" id="bachelorCollapse">
+                            <div class="card card-body">
+                                <strong>Name:</strong> Itahati Namuna College<br>
+                                <strong>Course:</strong> BCA (Bachelor in Computer Application)<br>
+                                <strong>Status:</strong> Running
+                            </div>
                         </div>
                     </div>
                 </section>
+
+                <section class="expertise-section">
+                    <div class="expertise-card">
+                        <i class="fas fa-paint-brush"></i>
+                        <h3>Graphic Designer</h3>
+                        <p>Passionate about creating visually appealing designs that leave a lasting impression.</p>
+                    </div>
+
+                    <div class="expertise-card">
+                        <i class="fas fa-bullhorn"></i>
+                        <h3>Digital Marketing</h3>
+                        <p>Strategically promoting products and services to reach a wider audience and drive engagement.</p>
+                    </div>
+
+                    <div class="expertise-card">
+                        <i class="fas fa-code"></i>
+                        <h3>Frontend Developer</h3>
+                        <p>Building user-friendly and responsive websites with the latest technologies and best practices.</p>
+                    </div>
+
+                    <div class="expertise-card">
+                        <i class="fas fa-tools"></i>
+                        <h3>Tool Developer</h3>
+                        <p>Creating custom tools and applications to streamline processes and enhance productivity.</p>
+                    </div>
+                </section>
             </div>
+        </section>
 
-            <section class="qualification-section">
-                <h2>Qualifications</h2>
-
-                <div class="qualification-item">
-                    <p>
-                        <a id="qf" class="btn btn-primary btn-sm" data-toggle="collapse" href="#schoolCollapse" role="button" aria-expanded="false" aria-controls="schoolCollapse">
-                            School
-                        </a>
-                    </p>
-                    <div class="collapse" id="schoolCollapse">
-                        <div class="card card-body">
-                            <strong>Name:</strong> Our English Boarding School<br>
-                            <strong>Completed on:</strong> 2019 AD<br>
-                            <strong>Status:</strong> Finished
-                        </div>
-                    </div>
-                </div>
-
-                <div class="qualification-item">
-                    <p>
-                        <a id="qf" class="btn btn-primary btn-sm" data-toggle="collapse" href="#higherSchoolCollapse" role="button" aria-expanded="false" aria-controls="higherSchoolCollapse">
-                            Higher School
-                        </a>
-                    </p>
-                    <div  class="collapse" id="higherSchoolCollapse">
-                        <div class="card card-body">
-                            <strong>Name:</strong> Merryland Higher Secondary<br>
-                            <strong>Completed:</strong> +2 at 2021-2022 AD<br>
-                            <strong>Status:</strong> Finished
-                        </div>
-                    </div>
-                </div>
-
-                <div class="qualification-item">
-                    <p>
-                        <a id="qf" class="btn btn-primary btn-sm" data-toggle="collapse" href="#bachelorCollapse" role="button" aria-expanded="false" aria-controls="bachelorCollapse">
-                            Bachelor
-                        </a>
-                    </p>
-                    <div class="collapse" id="bachelorCollapse">
-                        <div class="card card-body">
-                            <strong>Name:</strong> Itahati Namuna College<br>
-                            <strong>Course:</strong> BCA (Bachelor in Computer Application)<br>
-                            <strong>Status:</strong> Running
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="expertise-section">
-                <div class="expertise-card">
-                    <i class="fas fa-paint-brush"></i>
-                    <h3>Graphic Designer</h3>
-                    <p>Passionate about creating visually appealing designs that leave a lasting impression.</p>
-                </div>
-
-                <div class="expertise-card">
-                    <i class="fas fa-bullhorn"></i>
-                    <h3>Digital Marketing</h3>
-                    <p>Strategically promoting products and services to reach a wider audience and drive engagement.</p>
-                </div>
-
-                <div class="expertise-card">
-                    <i class="fas fa-code"></i>
-                    <h3>Frontend Developer</h3>
-                    <p>Building user-friendly and responsive websites with the latest technologies and best practices.</p>
-                </div>
-
-                <div class="expertise-card">
-                    <i class="fas fa-tools"></i>
-                    <h3>Tool Developer</h3>
-                    <p>Creating custom tools and applications to streamline processes and enhance productivity.</p>
-                </div>
-            </section>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Prasanga. All rights reserved.</p>
-        </div>
-    </footer>
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 Prasanga. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -177,6 +216,17 @@
 
         // Activate typing effect
         typeEffect(typingParagraph, typingSpeed);
+
+
+        // Simulate page load and loading state
+        document.addEventListener('DOMContentLoaded', function () {
+            // Simulate a loading delay
+            setTimeout(function () {
+                // Hide the loading overlay and show the content
+                document.getElementById('loadingOverlay').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            }, 2000); // Simulating a 2 second loading time
+        });
     </script>
 </body>
 </html>
