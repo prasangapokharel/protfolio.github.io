@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="index.css">
     <style>
-       
-
         /* Loading overlay */
         .loading-overlay {
             display: flex;
@@ -30,10 +28,63 @@
             border-radius: 10px;
             text-align: center;
         }
+
+        /* Loader styles */
+        .loader {
+            display: block;
+            --height-of-loader: 4px;
+            --loader-color: #0071e2;
+            width: 130px;
+            height: var(--height-of-loader);
+            border-radius: 30px;
+            background-color: rgb(255, 255, 255);
+            position: relative;
+        }
+
+        .loader::before {
+            content: "";
+            position: absolute;
+            background: var(--loader-color);
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            border-radius: 30px;
+            animation: moving 1s ease-in-out infinite;
+        }
+
+        @keyframes moving {
+            50% {
+                width: 100%;
+            }
+
+            100% {
+                width: 0;
+                right: 0;
+                left: unset;
+            }
+        }
+
+         /* Play icon styling */
+         .play-icon {
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 24px;
+            color: #0071e2; /* Same color as loader */
+        }
+
+        .play-icon:hover {
+            color: #0056b3; /* Darker on hover */
+        }
     </style>
 </head>
 <body>
-    
+     <!-- Loading Overlay -->
+     <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-overlay-content">
+            <div class="loader"></div>
+        </div>
+    </div>
 
     <!-- Content -->
     <div id="content">
@@ -59,8 +110,9 @@
                     <img src="prof.svg" class="profile-img" alt="Profile Image">
                 </div>
                 <a class="rse" href="tools.html">view resume</a>
+                
                 <h2>I am prasanga</h2>
-                <p id="typing-text">I am a dedicated professional with 2 years of experience as a Frontend Designer. Proficient in Python, Bootstrap, C, C++, JavaScript, Php </p>
+                <p id="typing-text">I am a dedicated professional with 2 years of experience as a Frontend and Backend Developer. Proficient in Python, Bootstrap, Php, JavaScript, Mysql, Php </p>
 
                 <div class="click">
                     <button type="button" class="btn btn-primary">
@@ -68,8 +120,12 @@
                     </button>
                     <button type="button" class="btn btn-primary">
                         <a href="https://github.com/prasangapokharel">Github</a>
+                        <i class="fas fa-play play-icon" id="playIcon"></i> <!-- Play icon -->
+
                     </button>
+
                 </div>
+
                 <div class="skills">
                     <h2>Language Knowledge</h2>
 
@@ -241,7 +297,11 @@
                 </section>
             </div>
         </section>
-
+  <!-- MP3 Audio -->
+  <audio id="myAudio">
+    <source src="dhera.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
         <footer>
             <div class="container">
                 <p>&copy; 2024 Prasanga. All rights reserved.</p>
@@ -275,7 +335,6 @@
         // Activate typing effect
         typeEffect(typingParagraph, typingSpeed);
 
-
         // Simulate page load and loading state
         document.addEventListener('DOMContentLoaded', function () {
             // Simulate a loading delay
@@ -285,6 +344,23 @@
                 document.getElementById('content').style.display = 'block';
             }, 2000); // Simulating a 2 second loading time
         });
+
+        // Play icon click event with autoplay and toggle functionality
+document.getElementById('playIcon').addEventListener('click', function () {
+    const audio = document.getElementById('myAudio');
+    
+    // Check if audio is already playing
+    if (audio.paused) {
+        audio.play();
+        this.classList.remove('fa-play');
+        this.classList.add('fa-pause'); // Change icon to pause
+    } else {
+        audio.pause();
+        this.classList.remove('fa-pause');
+        this.classList.add('fa-play'); // Change icon back to play
+    }
+});
+
     </script>
 </body>
 </html>
