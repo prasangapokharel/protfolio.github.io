@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Music Player</title>
+    <style>
+        body {
+            font-family: 'Anonymous Pro', sans-serif;
+            background-color: #1b2b85;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+
+        header {
+            background-color: #0b1a71;
+            padding: 20px 0;
+            border-bottom: 1px solid #dee2e6;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            color: #f4f6f8 !important;
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 20px;
+            text-decoration: none;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 120px 20px 20px;
+        }
+
+        .card {
+            width: 300px;
+            background: #0b1a71;
+            border-radius: 15px;
+            padding: 1rem;
+            box-shadow: 0 10px 40px -25px rgba(100, 100, 100, .5);
+            border: none;
+            color: #fff;
+        }
+
+        .card .top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .card .pfp {
+            height: 50px;
+            width: 50px;
+            background-color: #fff;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card .title-1 {
+            font-size: 1.5rem;
+            font-weight: 900;
+        }
+
+        .card .title-2 {
+            font-size: 1rem;
+            color: #b3b3b3;
+        }
+
+        .card .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .card .controls svg {
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .card .controls svg:hover {
+            color: #fff;
+        }
+
+        .card .song-time {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .card .time {
+            width: 85%;
+            background-color: #5e5e5e;
+            height: .4rem;
+            border-radius: 3px;
+            position: relative;
+        }
+
+        .card .elapsed {
+            background-color: #fff;
+            height: 100%;
+            width: 0%;
+            border-radius: 3px;
+            transition: width 0.5s;
+        }
+
+        .card .timetext {
+            font-size: .9rem;
+            color: #b3b3b3;
+        }
+
+        .volume {
+            display: flex;
+            align-items: center;
+        }
+
+        .volume-slider {
+            -webkit-appearance: none;
+            width: 100px;
+            height: 4px;
+            background: #5e5e5e;
+            border-radius: 5px;
+            outline: none;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            background: #fff;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .volume-slider::-moz-range-thumb {
+            width: 12px;
+            height: 12px;
+            background: #fff;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a class="navbar-brand text-center" href="#">Prasangapokharel.com.np</a>
+    </header>
+    <div class="card-container">
+        <!-- Card 1 -->
+        <div class="card">
+            <div class="top">
+                <div class="pfp">
+                    
+                </div>
+                <div class="texts">
+                    <p class="title-1">Dheera Dheera - KGF 2</p>
+                    <p class="title-2">Artist Name</p>
+                </div>
+            </div>
+            <div class="controls">
+                <i class="fas fa-step-backward"></i>
+                <i class="fas fa-play" onclick="playMusic('dhera.mp3', this.closest('.card'))"></i>
+                <i class="fas fa-step-forward"></i>
+                <div class="volume">
+                    <input type="range" min="0" max="100" value="50" class="volume-slider" id="volume-control" onchange="changeVolume(this.value)">
+                </div>
+                <i class="fas fa-download" onclick="downloadMusic('dhera.mp3')"></i> <span>Download</span>
+            </div>
+            <div class="song-time">
+                <p class="timetext time_now">0:00</p>
+                <div class="time">
+                    <div class="elapsed"></div>
+                </div>
+                <p class="timetext time_full">3:30</p>
+            </div>
+        </div>
+         <!-- Card 1 -->
+         <div class="card">
+            <div class="top">
+                <div class="pfp">
+                    
+                </div>
+                <div class="texts">
+                    <p class="title-1">Dheera Dheera - KGF 2</p>
+                    <p class="title-2">Artist Name</p>
+                </div>
+            </div>
+            <div class="controls">
+                <i class="fas fa-step-backward"></i>
+                <i class="fas fa-play" onclick="playMusic('dhera.mp3', this.closest('.card'))"></i>
+                <i class="fas fa-step-forward"></i>
+                <div class="volume">
+                    <input type="range" min="0" max="100" value="50" class="volume-slider" id="volume-control" onchange="changeVolume(this.value)">
+                </div>
+                <i class="fas fa-download" onclick="downloadMusic('dhera.mp3')"></i> <span>Download</span>
+            </div>
+            <div class="song-time">
+                <p class="timetext time_now">0:00</p>
+                <div class="time">
+                    <div class="elapsed"></div>
+                </div>
+                <p class="timetext time_full">3:30</p>
+            </div>
+        </div>
+         <!-- Card 1 -->
+         <div class="card">
+            <div class="top">
+                <div class="pfp">
+                    
+                </div>
+                <div class="texts">
+                    <p class="title-1">Kasari Bhanu</p>
+                    <p class="title-2">Artist Name</p>
+                </div>
+            </div>
+            <div class="controls">
+                <i class="fas fa-step-backward"></i>
+                <i class="fas fa-play" onclick="playMusic('Kasari Bhanu - Official Lyrical Video - Swoopna Suman - Arbitrary Originals.mp3', this.closest('.card'))"></i>
+                <i class="fas fa-step-forward"></i>
+                <div class="volume">
+                    <input type="range" min="0" max="100" value="50" class="volume-slider" id="volume-control" onchange="changeVolume(this.value)">
+                </div>
+                <i class="fas fa-download" onclick="downloadMusic('Kasari Bhanu - Official Lyrical Video - Swoopna Suman - Arbitrary Originals.mp3')"></i> <span>Download</span>
+            </div>
+            <div class="song-time">
+                <p class="timetext time_now">0:00</p>
+                <div class="time">
+                    <div class="elapsed"></div>
+                </div>
+                <p class="timetext time_full">3:30</p>
+            </div>
+        </div>
+         <!-- Card 1 -->
+         <div class="card">
+            <div class="top">
+                <div class="pfp">
+                    
+                </div>
+                <div class="texts">
+                    <p class="title-1">Namo Namo</p>
+                    <p class="title-2">Artist Name</p>
+                </div>
+            </div>
+            <div class="controls">
+                <i class="fas fa-step-backward"></i>
+                <i class="fas fa-play" onclick="playMusic('Namo Namo - Lyrical  Kedarnath  Sushant Rajput  Sara Ali Khan  Amit Trivedi  Amitabh B.mp3', this.closest('.card'))"></i>
+                <i class="fas fa-step-forward"></i>
+                <div class="volume">
+                    <input type="range" min="0" max="100" value="50" class="volume-slider" id="volume-control" onchange="changeVolume(this.value)">
+                </div>
+                <i class="fas fa-download" onclick="downloadMusic('Namo Namo - Lyrical  Kedarnath  Sushant Rajput  Sara Ali Khan  Amit Trivedi  Amitabh B.mp3')"></i> <span>Download</span>
+            </div>
+            <div class="song-time">
+                <p class="timetext time_now">0:00</p>
+                <div class="time">
+                    <div class="elapsed"></div>
+                </div>
+                <p class="timetext time_full">3:30</p>
+            </div>
+        </div>
+         <!-- Card 1 -->
+         <div class="card">
+            <div class="top">
+                <div class="pfp">
+                    
+                </div>
+                <div class="texts">
+                    <p class="title-1">Dheera Dheera - KGF 2</p>
+                    <p class="title-2">Artist Name</p>
+                </div>
+            </div>
+            <div class="controls">
+                <i class="fas fa-step-backward"></i>
+                <i class="fas fa-play" onclick="playMusic('dhera.mp3', this.closest('.card'))"></i>
+                <i class="fas fa-step-forward"></i>
+                <div class="volume">
+                    <input type="range" min="0" max="100" value="50" class="volume-slider" id="volume-control" onchange="changeVolume(this.value)">
+                </div>
+                <i class="fas fa-download" onclick="downloadMusic('dhera.mp3')"></i> <span>Download</span>
+            </div>
+            <div class="song-time">
+                <p class="timetext time_now">0:00</p>
+                <div class="time">
+                    <div class="elapsed"></div>
+                </div>
+                <p class="timetext time_full">3:30</p>
+            </div>
+        </div>
+         <!-- Card 1 -->
+         <div class="card">
+            <div class="top">
+                <div class="pfp">
+                    
+                </div>
+                <div class="texts">
+                    <p class="title-1">Dheera Dheera - KGF 2</p>
+                    <p class="title-2">Artist Name</p>
+                </div>
+            </div>
+            <div class="controls">
+                <i class="fas fa-step-backward"></i>
+                <i class="fas fa-play" onclick="playMusic('dhera.mp3', this.closest('.card'))"></i>
+                <i class="fas fa-step-forward"></i>
+                <div class="volume">
+                    <input type="range" min="0" max="100" value="50" class="volume-slider" id="volume-control" onchange="changeVolume(this.value)">
+                </div>
+                <i class="fas fa-download" onclick="downloadMusic('dhera.mp3')"></i> <span>Download</span>
+            </div>
+            <div class="song-time">
+                <p class="timetext time_now">0:00</p>
+                <div class="time">
+                    <div class="elapsed"></div>
+                </div>
+                <p class="timetext time_full">3:30</p>
+            </div>
+        </div>
+         <!-- Card 1 -->
+         <div class="card">
+            <div class="top">
+                <div class="pfp">
+                    
+                </div>
+                <div class="texts">
+                    <p class="title-1">Dheera Dheera - KGF 2</p>
+                    <p class="title-2">Artist Name</p>
+                </div>
+            </div>
+            <div class="controls">
+                <i class="fas fa-step-backward"></i>
+                <i class="fas fa-play" onclick="playMusic('dhera.mp3', this.closest('.card'))"></i>
+                <i class="fas fa-step-forward"></i>
+                <div class="volume">
+                    <input type="range" min="0" max="100" value="50" class="volume-slider" id="volume-control" onchange="changeVolume(this.value)">
+                </div>
+                <i class="fas fa-download" onclick="downloadMusic('dhera.mp3')"></i> <span>Download</span>
+            </div>
+            <div class="song-time">
+                <p class="timetext time_now">0:00</p>
+                <div class="time">
+                    <div class="elapsed"></div>
+                </div>
+                <p class="timetext time_full">3:30</p>
+            </div>
+        </div>
+         <!-- Card 1 -->
+         <div class="card">
+            <div class="top">
+                <div class="pfp">
+                    
+                </div>
+                <div class="texts">
+                    <p class="title-1">Tum Prem Ho</p>
+                    <p class="title-2">Artist Name</p>
+                </div>
+            </div>
+            <div class="controls">
+                <i class="fas fa-step-backward"></i>
+                <i class="fas fa-play" onclick="playMusic('Tum Prem Ho - Reprise  Lyrical Video  Radha Krishn  MOhit Lalwani  Surya Raj Kamal.mp3', this.closest('.card'))"></i>
+                <i class="fas fa-step-forward"></i>
+                <div class="volume">
+                    <input type="range" min="0" max="100" value="50" class="volume-slider" id="volume-control" onchange="changeVolume(this.value)">
+                </div>
+                <i class="fas fa-download" onclick="downloadMusic('Tum Prem Ho - Reprise  Lyrical Video  Radha Krishn  MOhit Lalwani  Surya Raj Kamal.mp3')"></i> <span>Download</span>
+            </div>
+            <div class="song-time">
+                <p class="timetext time_now">0:00</p>
+                <div class="time">
+                    <div class="elapsed"></div>
+                </div>
+                <p class="timetext time_full">3:30</p>
+            </div>
+        </div>
+        
+        <!-- Add more cards similarly for other songs -->
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="music.js"></script>
+</body>
+</html>
