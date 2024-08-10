@@ -57,15 +57,13 @@ header {
     font-size: 18px;
     padding: 12px 24px;
     margin-right: 20px;
-    background-color: #007bff;
     border: none;
-    border-radius: 5px;
+    border-radius: 12px;
     margin-bottom: 30px;
     transition: background-color 0.3s;
 }
 
 .click .btn:hover {
-    background-color: #0056b3;
 }
 
 .click .btn a {
@@ -192,7 +190,7 @@ img.profile-img {
     max-width: 100%;
     height: 120px;
     width: 120px;
-    margin-bottom: 20px;
+    margin-bottom: -20px;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -248,12 +246,13 @@ img.profile-img {
 }
 
 .card-title {
-    font-size: 1.25rem;
+    font-size: 20px;
     font-weight: bold;
     margin-bottom: 0.75rem;
 }
 
 .card-text {
+    font-style: italic;
     font-size: 1rem;
     margin-bottom: 1rem;
 }
@@ -263,7 +262,7 @@ img.profile-img {
     background-color: #007bff;
     border-color: #007bff;
     border-radius: 12px;
-    padding: 0.5rem 1rem;
+    padding: 12px auto;
     text-decoration: none;
 }
 
@@ -272,3 +271,35 @@ img.profile-img {
         width: 100%; /* Full width for smaller screens */
     }
 }
+/* From Uiverse.io by mi-series */ 
+.button {
+    width: 150px;
+    padding: 0;
+    border: none;
+    transform: rotate(5deg);
+    transform-origin: center;
+    font-family: "Gochi Hand", cursive;
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;
+    padding-bottom: 3px;
+    border-radius: 5px;
+    box-shadow: 0 2px 0 #494a4b;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background-color: #007bff;
+  }
+  
+  .button span {
+    background: #f1f5f8;
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 2px solid #494a4b;
+  }
+  
+  .button:active {
+    transform: translateY(5px);
+    padding-bottom: 0px;
+    outline: 0;
+  }
+  
