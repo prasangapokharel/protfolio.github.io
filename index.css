@@ -303,7 +303,7 @@ img.profile-img {
   }
   .banner {
     max-width: 60%;
-    margin: auto 20%;
+    margin: auto ;
     width: 100%; /* Make the banner take the full width of the page */
     overflow: hidden; /* Hide overflow to ensure a clean look */
 }
