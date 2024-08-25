@@ -302,9 +302,9 @@ img.profile-img {
     outline: 0;
   }
   .banner {
-    max-width: 80%;
-    margin: auto 10%;
-    width: 90%; /* Make the banner take the full width of the page */
+    max-width: 60%;
+    margin: auto 20%;
+    width: 100%; /* Make the banner take the full width of the page */
     overflow: hidden; /* Hide overflow to ensure a clean look */
 }
 
