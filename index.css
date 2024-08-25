@@ -202,7 +202,7 @@ img.profile-img {
 
 #qf{
     width: 60%;
-    border-radius: 4px;
+    border-radius: 12px;
 }
 .qualification-section{
     margin: 90px auto;
@@ -277,9 +277,8 @@ img.profile-img {
     border: none;
     transform: rotate(5deg);
     transform-origin: center;
-    font-family: "Gochi Hand", cursive;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 16px;
     cursor: pointer;
     padding-bottom: 3px;
     border-radius: 5px;
@@ -291,6 +290,7 @@ img.profile-img {
   .button span {
     background: #f1f5f8;
     display: block;
+    font-weight: bold;
     padding: 0.5rem 1rem;
     border-radius: 5px;
     border: 2px solid #494a4b;
@@ -301,4 +301,29 @@ img.profile-img {
     padding-bottom: 0px;
     outline: 0;
   }
-  
+  .banner {
+    max-width: 80%;
+    margin: auto 10%;
+    width: 90%; /* Make the banner take the full width of the page */
+    overflow: hidden; /* Hide overflow to ensure a clean look */
+}
+
+.banner img {
+    border: 4px;
+    border-radius: 29px;
+    width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain the aspect ratio */
+    display: block; /* Remove the bottom space under the image */
+}
+
+
+.btn.btn-primary.btn-sm{
+    border: 2px;
+    border-radius: 22px;
+}
+#data{
+    border: 2px;
+    border-radius: 22px;
+    max-width: 60%;
+    margin: auto 20%;
+}
