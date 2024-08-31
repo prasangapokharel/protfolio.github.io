@@ -1,37 +1,69 @@
-/* Main Styling */
 body {
-    font-family: 'Anonymous Pro', sans-serif;
-    background-color: #ffffff;
-    margin: 0;
-    padding: 0;
-    color: #000;
+    font-family: Arial, sans-serif; /* General font family */
 }
 
+/* Header and Navbar Styling */
 header {
-    background-color: #f8f9fa;
-    padding: 20px 0;
-    border-bottom: 1px solid #dee2e6;
+    background-color: #ffffff;
+    padding: 15px 10%;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for a premium feel */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar-brand {
-    color: #343a40 !important;
-    font-size: 24px;
-    float: right;
-    text-align: right;
+    color: #333333;
+    font-size: 26px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-decoration: none; /* Remove underline */
+}
 
+.navbar-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px; /* Spacing between nav items */
+}
+
+.navbar-nav .nav-item {
+    float: right;
+    position: relative;
 }
 
 .navbar-nav .nav-link {
-    color: #343a40 !important;
+    float: right;
+    color: #555555;
     font-size: 18px;
-    margin-left: 20px;
-    text-align: right;
-
+    font-weight: 500;
+    text-transform: capitalize;
+    transition: color 0.3s ease;
+    text-decoration: none;
 }
 
 .navbar-nav .nav-link:hover {
-    color: #6c757d !important;
+    color: #007bff;
 }
+
+/* Add an underline effect on hover */
+.navbar-nav .nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #007bff;
+    transition: width 0.3s ease;
+    margin-top: 5px;
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+}
+
 
 .professional-section {
     padding: 50px 0;

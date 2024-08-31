@@ -1,0 +1,164 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif; /* General font family */
+}
+
+/* Header and Navbar Styling */
+header {
+    background-color: #ffffff;
+    padding: 15px 10%;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for a premium feel */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    color: #333333;
+    font-size: 26px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-decoration: none; /* Remove underline */
+}
+
+.navbar-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px; /* Spacing between nav items */
+    margin-left: auto; /* Pushes nav items to the right */
+}
+
+.navbar-nav .nav-item {
+    position: relative;
+    text-align: right;
+    float: right;
+}
+.nav-item a{
+    position: relative;
+    text-align: right;
+
+}
+
+.navbar-nav .nav-link {
+    color: #555555;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: capitalize;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff;
+}
+
+/* Add an underline effect on hover */
+.navbar-nav .nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #007bff;
+    transition: width 0.3s ease;
+    margin-top: 5px;
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Project Section Styling */
+.proj {
+    display: flex;
+    gap: 40px;
+    justify-content: stretch;
+    margin: 5% 15%;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 18rem;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: cover;
+    width: 100%; 
+    height: 180px; /* Fixed image height */
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+}
+
+.card-text {
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Button Styling */
+.button {
+    width: 150px;
+    padding: 0;
+    border: none;
+    transform: rotate(5deg);
+    transform-origin: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding-bottom: 3px;
+    border-radius: 5px;
+    box-shadow: 0 2px 0 #494a4b;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background-color: #007bff;
+}
+
+.button span {
+    background: #f1f5f8;
+    display: block;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 2px solid #494a4b;
+}
+
+.button:active {
+    transform: translateY(5px);
+    padding-bottom: 0px;
+    outline: 0;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 676px) {
+    .card {
+        width: 100%;
+    }
+}
