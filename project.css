@@ -29,18 +29,10 @@ header {
     padding: 0;
     display: flex;
     gap: 30px; /* Spacing between nav items */
-    margin-left: auto; /* Pushes nav items to the right */
 }
 
 .navbar-nav .nav-item {
     position: relative;
-    text-align: right;
-    float: right;
-}
-.nav-item a{
-    position: relative;
-    text-align: right;
-
 }
 
 .navbar-nav .nav-link {
@@ -70,7 +62,6 @@ header {
 .navbar-nav .nav-link:hover::after {
     width: 100%;
 }
-
 /* Footer Styling */
 footer {
     text-align: center;
