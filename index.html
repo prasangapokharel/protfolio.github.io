@@ -3,202 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prasanga Pokharel - Modern Portfolio</title>
+    <title>Prasanga Pokharel - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'fade-in': 'fade-in 1s ease-in-out',
+                        'pulse': 'pulse 1s linear infinite'
+                    },
+                    keyframes: {
+                        'fade-in': {
+                            '0%': {
+                                opacity: '0',
+                                transform: 'translateY(20px)'
+                            },
+                            '100%': {
+                                opacity: '1',
+                                transform: 'translateY(0)'
+                            }
+                        }
+                    }
+                }
+            }
         }
-        
-        @keyframes slideIn {
-            from { transform: translateX(-100%); }
-            to { transform: translateX(0); }
-        }
-
-        .animate-fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
-        }
-
-        .animate-slide-in {
-            animation: slideIn 0.8s ease-out forwards;
-        }
-
-        .progress-bar {
-            transition: width 1s ease-in-out;
-        }
-
-        .hover-scale {
-            transition: transform 0.3s ease;
-        }
-        
-        .hover-scale:hover {
-            transform: scale(1.05);
-        }
-    </style>
-</head>
-<body class="bg-gray-50 text-gray-800">
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <a href="#" class="text-indigo-600 font-bold text-2xl">PRASANGA</a>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-600 hover:text-indigo-600 transition-colors">Home</a>
-                    <a href="#about" class="text-gray-600 hover:text-indigo-600 transition-colors">About</a>
-                    <a href="#projects" class="text-gray-600 hover:text-indigo-600 transition-colors">Projects</a>
-                    <a href="#contact" class="text-gray-600 hover:text-indigo-600 transition-colors">Contact</a>
-                </div>
-                <button class="md:hidden text-gray-600" onclick="toggleMenu()">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden fixed inset-0 bg-white z-40 md:hidden">
-        <div class="flex flex-col items-center justify-center h-full space-y-8">
-            <a href="#home" class="text-2xl text-gray-600 hover:text-indigo-600">Home</a>
-            <a href="#about" class="text-2xl text-gray-600 hover:text-indigo-600">About</a>
-            <a href="#projects" class="text-2xl text-gray-600 hover:text-indigo-600">Projects</a>
-            <a href="#contact" class="text-2xl text-gray-600 hover:text-indigo-600">Contact</a>
-            <button onclick="toggleMenu()" class="absolute top-4 right-4 text-gray-600">
-                <i class="fas fa-times text-2xl"></i>
-            </button>
-        </div>
-    </div>
-
-    <!-- Hero Section -->
-    <section id="home" class="pt-24 md:pt-32 pb-16 px-4">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-center">
-            <div class="animate-fade-in">
-                <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4">
-                    Hi, I'm <span class="text-indigo-600">Prasanga</span>
-                </h1>
-                <p class="text-xl text-gray-600 mb-8">
-                    Frontend & Backend Developer with 2 years of experience in Python, Bootstrap, PHP, JavaScript, and MySQL.
-                </p>
-                <div class="flex space-x-4">
-                    <a href="#contact" class="bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition-colors">
-                        Contact Me
-                    </a>
-                    <a href="https://github.com/prasangapokharel" class="bg-gray-800 text-white px-8 py-3 rounded-lg hover:bg-gray-900 transition-colors">
-                        <i class="fab fa-github mr-2"></i> GitHub
-                    </a>
-                </div>
-            </div>
-            <div class="animate-fade-in flex justify-center">
-                <img src="prof.svg" alt="Profile" class="rounded-full w-64 h-64 object-cover shadow-lg">
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Technical Skills</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="space-y-6 animate-fade-in">
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <span class="text-gray-700"><i class="fab fa-python mr-2"></i>Python</span>
-                            <span class="text-gray-600">80%</span>
-                        </div>
-                        <div class="h-2 bg-gray-200 rounded-full">
-                            <div class="h-2 bg-indigo-600 rounded-full progress-bar" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <span class="text-gray-700"><i class="fab fa-php mr-2"></i>PHP</span>
-                            <span class="text-gray-600">60%</span>
-                        </div>
-                        <div class="h-2 bg-gray-200 rounded-full">
-                            <div class="h-2 bg-indigo-600 rounded-full progress-bar" style="width: 60%"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="space-y-6 animate-fade-in">
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <span class="text-gray-700"><i class="fab fa-js mr-2"></i>JavaScript</span>
-                            <span class="text-gray-600">85%</span>
-                        </div>
-                        <div class="h-2 bg-gray-200 rounded-full">
-                            <div class="h-2 bg-indigo-600 rounded-full progress-bar" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <span class="text-gray-700"><i class="fab fa-bootstrap mr-2"></i>Bootstrap</span>
-                            <span class="text-gray-600">85%</span>
-                        </div>
-                        <div class="h-2 bg-gray-200 rounded-full">
-                            <div class="h-2 bg-indigo-600 rounded-full progress-bar" style="width: 85%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Services</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-md hover-scale">
-                    <i class="fas fa-paint-brush text-4xl text-indigo-600 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Graphic Design</h3>
-                    <p class="text-gray-600">Creating visually appealing designs that leave a lasting impression.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md hover-scale">
-                    <i class="fas fa-bullhorn text-4xl text-indigo-600 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Digital Marketing</h3>
-                    <p class="text-gray-600">Strategic promotion to reach wider audiences and drive engagement.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md hover-scale">
-                    <i class="fas fa-code text-4xl text-indigo-600 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Frontend Development</h3>
-                    <p class="text-gray-600">Building responsive websites with latest technologies.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md hover-scale">
-                    <i class="fas fa-tools text-4xl text-indigo-600 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Tool Development</h3>
-                    <p class="text-gray-600">Creating custom tools to enhance productivity.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p>&copy; 2024 Prasanga. All rights reserved.</p>
-        </div>
-    </footer>
-
+    </script>
     <script>
         function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('hidden');
         }
-
-        // Intersection Observer for animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fade-in');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        // Observe all elements that should animate
-        document.querySelectorAll('.animate-fade-in').forEach((el) => observer.observe(el));
     </script>
+</head>
+<body class="font-sans bg-gray-100">
+
+    <!-- Navigation -->
+<nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+            <a href="#" class="text-indigo-600 font-bold text-2xl">PRASANGA</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-600 hover:text-indigo-600 transition-colors">Home</a>
+                <a href="#about" class="text-gray-600 hover:text-indigo-600 transition-colors">About</a>
+                <a href="#resume" class="text-gray-600 hover:text-indigo-600 transition-colors">Resume</a>
+                <a href="#projects" class="text-gray-600 hover:text-indigo-600 transition-colors">Projects</a>
+                <a href="#contact" class="text-gray-600 hover:text-indigo-600 transition-colors">Contact</a>
+            </div>
+            <button class="md:hidden text-gray-600" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+    <!-- Hero Section -->
+<section id="home" class="pt-24 md:pt-32 pb-16 px-4">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+        <div class="animate-fade-in">
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4">
+                Hi, I'm <span class="text-indigo-600">Prasanga</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-8">
+                Frontend & Backend Developer with 2 years of experience in Python, Bootstrap, PHP, JavaScript, and MySQL.
+            </p>
+            <div class="flex space-x-4">
+                <a href="#contact" class="bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition-colors">
+                    Contact Me
+                </a>
+                <a href="https://github.com/prasangapokharel" class="bg-gray-800 text-white px-8 py-3 rounded-lg hover:bg-gray-900 transition-colors">
+                    <i class="fab fa-github mr-2"></i> GitHub
+                </a>
+            </div>
+        </div>
+        <div class="animate-fade-in flex justify-center">
+            <div class="relative w-64 h-64 rounded-full overflow-hidden border-4 border-indigo-600 shadow-lg">
+                <img src="prof.svg" alt="Profile" class="absolute inset-0 w-full h-full object-cover animate-pulse">
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">About Me</h2>
+            <p class="text-lg text-gray-600 text-center">
+                This is a brief description about myself.  I am a passionate frontend and backend developer with a keen interest in creating innovative and user-friendly web applications.  I have a strong foundation in various programming languages and technologies, and I am always eager to learn and expand my skillset.
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Skills</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md animate-fade-in">
+                    <h3 class="text-xl font-semibold mb-2">HTML</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-indigo-600 h-2.5 rounded-full w-4/5"></div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md animate-fade-in">
+                    <h3 class="text-xl font-semibold mb-2">CSS</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-indigo-600 h-2.5 rounded-full w-4/5"></div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md animate-fade-in">
+                    <h3 class="text-xl font-semibold mb-2">JavaScript</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-indigo-600 h-2.5 rounded-full w-3/5"></div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md animate-fade-in">
+                    <h3 class="text-xl font-semibold mb-2">Python</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-indigo-600 h-2.5 rounded-full w-3/5"></div>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+<section id="resume" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Resume</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-6 animate-fade-in">
+                <h3 class="text-2xl font-bold text-indigo-600">Education</h3>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h4 class="text-xl font-semibold">Bachelor of Computer Science</h4>
+                    <p class="text-gray-600">University of Example</p>
+                    <p class="text-gray-500">2018 - 2022</p>
+                </div>
+            </div>
+            <div class="space-y-6 animate-fade-in">
+                <h3 class="text-2xl font-bold text-indigo-600">Experience</h3>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h4 class="text-xl font-semibold">Frontend Developer</h4>
+                    <p class="text-gray-600">Tech Company Inc.</p>
+                    <p class="text-gray-500">2022 - Present</p>
+                    <ul class="list-disc list-inside mt-2 text-gray-600">
+                        <li>Developed responsive web applications</li>
+                        <li>Collaborated with cross-functional teams</li>
+                        <li>Implemented new features and optimized existing ones</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-8">
+            <a href="#" class="inline-block bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition-colors">
+                Download Full Resume
+            </a>
+        </div>
+    </div>
+</section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Projects</h2>
+            <p class="text-lg text-gray-600 text-center">
+                Showcase your projects here.  You can add images and descriptions for each project.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Contact Me</h2>
+            <p class="text-lg text-gray-600 text-center">
+                Feel free to reach out!
+            </p>
+        </div>
+    </section>
+
+    <!-- Mobile Menu -->
+<div id="mobileMenu" class="hidden fixed inset-0 bg-white z-40 md:hidden">
+    <div class="flex flex-col items-center justify-center h-full space-y-8">
+        <a href="#home" class="text-2xl text-gray-600 hover:text-indigo-600">Home</a>
+        <a href="#about" class="text-2xl text-gray-600 hover:text-indigo-600">About</a>
+        <a href="#resume" class="text-2xl text-gray-600 hover:text-indigo-600">Resume</a>
+        <a href="#projects" class="text-2xl text-gray-600 hover:text-indigo-600">Projects</a>
+        <a href="#contact" class="text-2xl text-gray-600 hover:text-indigo-600">Contact</a>
+        <button onclick="toggleMenu()" class="absolute top-4 right-4 text-gray-600">
+            <i class="fas fa-times text-2xl"></i>
+        </button>
+    </div>
+</div>
+
 </body>
 </html>
+
