@@ -3,223 +3,425 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prasanga Pokharel - Modern Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="robots" content="noindex">
+    <meta name="description" content="Learn more about Prasanga Raman Pokharel, a tech enthusiast involved in various software development projects.">
+
+
+    <title>Prasanga Pokharel - Tech Enthusiast and Developer</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
     <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes slideIn {
-            from { transform: translateX(-100%); }
-            to { transform: translateX(0); }
-        }
-
-        .animate-fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
-        }
-
-        .animate-slide-in {
-            animation: slideIn 0.8s ease-out forwards;
+        /* Loading overlay */
+        .loading-overlay {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(255, 255, 255); /* Semi-transparent black */
+            z-index: 1050; /* Ensure overlay is on top of everything else */
         }
 
-        .progress-bar {
-            transition: width 1s ease-in-out;
+        .loading-overlay-content {
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
         }
 
-        .hover-scale {
-            transition: transform 0.3s ease;
+        /* Loader styles */
+        .loader {
+            display: block;
+            --height-of-loader: 4px;
+            --loader-color: #0071e2;
+            width: 130px;
+            height: var(--height-of-loader);
+            border-radius: 30px;
+            background-color: rgb(255, 255, 255);
+            position: relative;
         }
-        
-        .hover-scale:hover {
-            transform: scale(1.05);
+
+        .loader::before {
+            content: "";
+            position: absolute;
+            background: var(--loader-color);
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            border-radius: 30px;
+            animation: moving 1s ease-in-out infinite;
+        }
+
+        @keyframes moving {
+            50% {
+                width: 100%;
+            }
+
+            100% {
+                width: 0;
+                right: 0;
+                left: unset;
+            }
+        }
+
+         /* Play icon styling */
+         .play-icon {
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 24px;
+            color: #0f60b6; /* Same color as loader */
+        }
+
+        .play-icon:hover {
+            color: #0056b3; /* Darker on hover */
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <a href="#" class="text-indigo-600 font-bold text-2xl">PRASANGA</a>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-600 hover:text-indigo-600 transition-colors">Home</a>
-                    <a href="#about" class="text-gray-600 hover:text-indigo-600 transition-colors">About</a>
-                    <a href="#projects" class="text-gray-600 hover:text-indigo-600 transition-colors">Projects</a>
-                    <a href="#contact" class="text-gray-600 hover:text-indigo-600 transition-colors">Contact</a>
-                </div>
-                <button class="md:hidden text-gray-600" onclick="toggleMenu()">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden fixed inset-0 bg-white z-40 md:hidden">
-        <div class="flex flex-col items-center justify-center h-full space-y-8">
-            <a href="#home" class="text-2xl text-gray-600 hover:text-indigo-600">Home</a>
-            <a href="#about" class="text-2xl text-gray-600 hover:text-indigo-600">About</a>
-            <a href="#projects" class="text-2xl text-gray-600 hover:text-indigo-600">Projects</a>
-            <a href="#contact" class="text-2xl text-gray-600 hover:text-indigo-600">Contact</a>
-            <button onclick="toggleMenu()" class="absolute top-4 right-4 text-gray-600">
-                <i class="fas fa-times text-2xl"></i>
-            </button>
+<body>
+     <!-- Loading Overlay -->
+     <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-overlay-content">
+            <div class="loader"></div>
         </div>
     </div>
-
-    <!-- Hero Section -->
-    <section id="home" class="pt-24 md:pt-32 pb-16 px-4">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-center">
-            <div class="animate-fade-in">
-                <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4">
-                    Hi, I'm <span class="text-indigo-600">Prasanga</span>
-                </h1>
-                <p class="text-xl text-gray-600 mb-8">
-                    Frontend & Backend Developer with 2 years of experience in Python, Bootstrap, PHP, JavaScript, and MySQL.
-                </p>
-                <div class="flex space-x-4">
-                    <a href="#contact" class="bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition-colors">
-                        Contact Me
-                    </a>
-                    <a href="https://github.com/prasangapokharel" class="bg-gray-800 text-white px-8 py-3 rounded-lg hover:bg-gray-900 transition-colors">
-                        <i class="fab fa-github mr-2"></i> GitHub
-                    </a>
-                </div>
+    <div style="display: none;">
+        Prasanga Raman Pokharel is the user who has been interacting with me. He attends Itahari Namuna College and is involved in various tech-related projects, including developing applications using PyQt, Flask, and Laravel. He is working on several programming and software development projects, focusing on creating professional and functional applications.
+      </div>
+        <!-- Navbar -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <a class="navbar-brand" href="#">PRASANGA</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="project.html">Project</a>
+                    </li>
+                    <!-- Add more nav items as needed -->
+                </ul>
             </div>
-            <div class="animate-fade-in flex justify-center">
-                <img src="/api/placeholder/400/400" alt="Profile" class="rounded-full w-64 h-64 object-cover shadow-lg">
-            </div>
-        </div>
-    </section>
+        </nav>
+    </header>
 
-    <!-- Skills Section -->
-    <section class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Technical Skills</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="space-y-6 animate-fade-in">
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <span class="text-gray-700"><i class="fab fa-python mr-2"></i>Python</span>
-                            <span class="text-gray-600">80%</span>
-                        </div>
-                        <div class="h-2 bg-gray-200 rounded-full">
-                            <div class="h-2 bg-indigo-600 rounded-full progress-bar" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <span class="text-gray-700"><i class="fab fa-php mr-2"></i>PHP</span>
-                            <span class="text-gray-600">60%</span>
-                        </div>
-                        <div class="h-2 bg-gray-200 rounded-full">
-                            <div class="h-2 bg-indigo-600 rounded-full progress-bar" style="width: 60%"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="space-y-6 animate-fade-in">
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <span class="text-gray-700"><i class="fab fa-js mr-2"></i>JavaScript</span>
-                            <span class="text-gray-600">85%</span>
-                        </div>
-                        <div class="h-2 bg-gray-200 rounded-full">
-                            <div class="h-2 bg-indigo-600 rounded-full progress-bar" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <span class="text-gray-700"><i class="fab fa-bootstrap mr-2"></i>Bootstrap</span>
-                            <span class="text-gray-600">85%</span>
-                        </div>
-                        <div class="h-2 bg-gray-200 rounded-full">
-                            <div class="h-2 bg-indigo-600 rounded-full progress-bar" style="width: 85%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Services Section -->
-    <section class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Services</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-md hover-scale">
-                    <i class="fas fa-paint-brush text-4xl text-indigo-600 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Graphic Design</h3>
-                    <p class="text-gray-600">Creating visually appealing designs that leave a lasting impression.</p>
+    <!-- Content -->
+    <div id="content">
+   
+        <section class="professional-section">
+            <div class="content">
+                <div class="profile-img-container">
+                    <img src="prof.svg" class="profile-img" alt="Profile Image">
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-md hover-scale">
-                    <i class="fas fa-bullhorn text-4xl text-indigo-600 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Digital Marketing</h3>
-                    <p class="text-gray-600">Strategic promotion to reach wider audiences and drive engagement.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md hover-scale">
-                    <i class="fas fa-code text-4xl text-indigo-600 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Frontend Development</h3>
-                    <p class="text-gray-600">Building responsive websites with latest technologies.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md hover-scale">
-                    <i class="fas fa-tools text-4xl text-indigo-600 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Tool Development</h3>
-                    <p class="text-gray-600">Creating custom tools to enhance productivity.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                <i class="fas fa-play play-icon" id="playIcon"></i><br> <!-- Play icon -->
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Get In Touch</h2>
-            <div class="max-w-lg mx-auto">
-                <form class="space-y-6">
-                    <div>
-                        <input type="text" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-colors">
-                    </div>
-                    <div>
-                        <input type="email" placeholder="Your Email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-colors">
-                    </div>
-                    <div>
-                        <textarea placeholder="Your Message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-colors"></textarea>
-                    </div>
-                    <button type="submit" class="w-full bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition-colors">
-                        Send Message
+                <a class="rse" href="tools.html">view resume</a>
+                
+                <h2>I am prasanga</h2>
+                <p id="typing-text">I am a dedicated professional with 2 years of experience as a Frontend and Backend Developer. Proficient in Python, Bootstrap, Php, JavaScript, Mysql, Php </p>
+
+                <div class="click">
+                    <button type="button" class="btn btn-primary">
+                        <a href="https://www.facebook.com/prasangapokharel?mibextid=LQQJ4d ">Contact Me to Make Website</a>
                     </button>
-                </form>
+
+
+                    <a href="https://github.com/prasangapokharel">
+                        <button type="button" class="btn btn-dark">
+                        <i class="fa-brands fa-github"></i>
+                        </button>
+                    </a>
+                
+
+                </div>
+
+                
+
+                <section class="qualification-section">
+                    <h2>Qualifications</h2>
+
+                    <div class="qualification-item">
+                        <p>
+                            <a id="qf" class="btn btn-primary btn-sm" data-toggle="collapse" href="#schoolCollapse" role="button" aria-expanded="false" aria-controls="schoolCollapse">
+                                School
+                            </a>
+                        </p>
+                        <div class="collapse" id="schoolCollapse">
+                            <div class="card card-body" id="data">
+                                <strong>Name:</strong> Our English Boarding School<br>
+                                <strong>Completed on:</strong> 2019 AD<br>
+                                <strong>Status:</strong> Finished
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="qualification-item">
+                        <p>
+                            <a id="qf" class="btn btn-primary btn-sm" data-toggle="collapse" href="#higherSchoolCollapse" role="button" aria-expanded="false" aria-controls="higherSchoolCollapse">
+                                Higher School
+                            </a>
+                        </p>
+                        <div  class="collapse" id="higherSchoolCollapse">
+                            <div class="card card-body" id="data">                                <strong>Name:</strong> Merryland Higher Secondary<br>
+                                <strong>Completed:</strong> +2 at 2021-2022 AD<br>
+                                <strong>Status:</strong> Finished
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="qualification-item">
+                        <p>
+                            <a id="qf" class="btn btn-primary btn-sm" data-toggle="collapse" href="#bachelorCollapse" role="button" aria-expanded="false" aria-controls="bachelorCollapse">
+                                Bachelor
+                            </a>
+                        </p>
+                        <div class="collapse" id="bachelorCollapse">
+                            <div class="card card-body" id="data">                                <strong>Name:</strong> Itahati Namuna College<br>
+                                <strong>Course:</strong> BCA (Bachelor in Computer Application)<br>
+                                <strong>Status:</strong> Running
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <h2>Completed Projects </h2>
+
+                <!-- <section class="proj">
+
+                    <div class="card" style="width: 18rem;">
+                        <img src="pdf.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Divine PDF</h5>
+                          <p class="card-text">Flask based web application where you can Convert and Protects your pdf using DivineDocs</p>
+                          <a href="https://www.facebook.com/prasangapokharel?mibextid=LQQJ4d">
+                            <button class="button">
+                              <span>Buy Now</span>
+                            </button>
+                          </a>
+                          
+                    </div>
+                      </div>
+
+                    <div class="card" style="width: 18rem;">
+                        <img src="mail.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Bulk Mailer</h5>
+                          <p class="card-text">A QT based software design to send bulk email to customer in one click with html templates made using python</p>
+                          <a href="https://www.facebook.com/prasangapokharel?mibextid=LQQJ4d">
+                            <button class="button">
+                              <span>Buy Now</span>
+                            </button>
+                          </a>                        
+                        </div>
+                      </div>
+
+                      <div class="card" style="width: 18rem;">
+                        <img src="domain.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Turbo Domain Checker</h5>
+                          <p class="card-text">Turbo-Domain-Finder is a Flask-based web application which find available domain names efficiently.</p>
+                          <a href="https://herum.onrender.com/">
+                            <button class="button">
+                              <span>Inspect</span>
+                            </button>
+                          </a>
+                        </div>
+                      </div>
+
+                    <div class="card" style="width: 18rem;">
+                        <img src="rr.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Pathau-Code/fileShare</h5>
+                          <p class="card-text">Pathau.com is a opensource platform to share code file without any registration and login</p>
+                          <a href="https://www.pathau.com/">
+                            <button class="button">
+                              <span>Inspect</span>
+                            </button>
+                          </a>
+                        </div>
+                      </div>
+
+                      <div class="card" style="width: 18rem;">
+                        <img src="adm.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Fitnepal</h5>
+                          <p class="card-text">Fitnepal platform aims users to track their health datas like protein, calories, diet plan and workout videos</p>
+                          <a href="https://github.com/prasangapokharel/Fitnepal-Completed">
+                            <button class="button">
+                              <span>Inspect</span>
+                            </button>
+                          </a>
+                        </div>
+                      </div>
+
+                      <div class="card" style="width: 18rem;">
+                        <img src="showwifi.svg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Show WiFi Password</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <a href="https://buymeacoffee.com/prasangapokharel/e/200896">
+                            <button class="button">
+                              <span>Buy</span>
+                            </button>
+                          </a>
+                        </div>
+                      </div>
+
+                </section> -->
+                <!-- <div class="banner">
+                    <h1 style="margin: 20px auto ; " >Services</h1>
+                    <img src="cvr.svg" alt="Banner Image">
+                </div> -->
+
+                <div class="skills">
+                    <h2>Language Knowledge</h2>
+
+                    <section class="programming-section">
+                        <div class="programming-language">
+                            <i class="fab fa-python"></i> Python
+                            <div class="progress-bar">
+                                <div class="progress" data-percentage="80%"></div>
+                            </div>
+                        </div>
+
+                        <div class="programming-language">
+                            <td><i class="fab fa-php"></i> PHP</td>
+                            <div class="progress-bar">
+                                <div class="progress" data-percentage="60%"></div>
+                            </div>
+                        </div>
+
+                        <div class="programming-language">
+                            <i class="fab fa-js"></i> JavaScript
+                            <div class="progress-bar">
+                                <div class="progress" data-percentage="85%"></div>
+                            </div>
+                        </div>
+
+                        <div class="programming-language">
+                            <i class="fab fa-bootstrap"></i> Bootstrap
+                            <div class="progress-bar">
+                                <div class="progress" data-percentage="85%"></div>
+                            </div>
+                        </div>
+
+
+                    </section>
+                </div>
+                <section class="expertise-section">
+                    <div class="expertise-card">
+                        <i class="fas fa-paint-brush"></i>
+                        <h3>Graphic Designer</h3>
+                        <p>Passionate about creating visually appealing designs that leave a lasting impression.</p>
+                    </div>
+
+                    <div class="expertise-card">
+                        <i class="fas fa-bullhorn"></i>
+                        <h3>Digital Marketing</h3>
+                        <p>Strategically promoting products and services to reach a wider audience and drive engagement.</p>
+                    </div>
+
+                    <div class="expertise-card">
+                        <i class="fas fa-code"></i>
+                        <h3>Frontend Developer</h3>
+                        <p>Building user-friendly and responsive websites with the latest technologies and best practices.</p>
+                    </div>
+
+                    <div class="expertise-card">
+                        <i class="fas fa-tools"></i>
+                        <h3>Tool Developer</h3>
+                        <p>Creating custom tools and applications to streamline processes and enhance productivity.</p>
+                    </div>
+                </section>
             </div>
-        </div>
-    </section>
+        </section>
+  <!-- MP3 Audio -->
+  <audio id="myAudio">
+    <source src="dhera.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 Prasanga. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p>&copy; 2024 Prasanga. All rights reserved.</p>
-        </div>
-    </footer>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
+        // Function to create typing effect
+        function typeEffect(element, speed) {
+            const text = element.innerHTML;
+            element.innerHTML = "";
+
+            let i = 0;
+            const typingInterval = setInterval(() => {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typingInterval);
+                }
+            }, speed);
         }
 
-        // Intersection Observer for animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fade-in');
-                }
-            });
-        }, { threshold: 0.1 });
+        // Typing effect configuration
+        const typingSpeed = 50; // Speed in milliseconds
+        const typingParagraph = document.getElementById('typing-text');
 
-        // Observe all elements that should animate
-        document.querySelectorAll('.animate-fade-in').forEach((el) => observer.observe(el));
+        // Activate typing effect
+        typeEffect(typingParagraph, typingSpeed);
+
+        // Simulate page load and loading state
+        document.addEventListener('DOMContentLoaded', function () {
+            // Simulate a loading delay
+            setTimeout(function () {
+                // Hide the loading overlay and show the content
+                document.getElementById('loadingOverlay').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            }, 2000); // Simulating a 2 second loading time
+        });
+
+        // Play icon click event with autoplay and toggle functionality
+document.getElementById('playIcon').addEventListener('click', function () {
+    const audio = document.getElementById('myAudio');
+    
+    // Check if audio is already playing
+    if (audio.paused) {
+        audio.play();
+        this.classList.remove('fa-play');
+        this.classList.add('fa-pause'); // Change icon to pause
+    } else {
+        audio.pause();
+        this.classList.remove('fa-pause');
+        this.classList.add('fa-play'); // Change icon back to play
+    }
+});
+
     </script>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Prasanga Raman Pokharel",
+          "alumniOf": "Itahari Namuna College",
+          "jobTitle": "Developer",
+          "description": "Prasanga Raman Pokharel is involved in developing applications using PyQt, Flask, and Laravel.",
+          "knowsAbout": ["Software Development", "Web Development", "Tech Projects"]
+        }
+        </script>
+        
 </body>
 </html>
