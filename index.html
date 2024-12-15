@@ -5,367 +5,216 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
     <meta name="description" content="Learn more about Prasanga Raman Pokharel, a tech enthusiast involved in various software development projects.">
-
-
     <title>Prasanga Pokharel - Tech Enthusiast and Developer</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&display=swap">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="index.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'anonymous': ['"Anonymous Pro"', 'monospace'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'slide-in': 'slideIn 0.5s ease-out',
+                        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideIn: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
     <style>
-        /* Loading overlay */
-        .loading-overlay {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgb(255, 255, 255); /* Semi-transparent black */
-            z-index: 1050; /* Ensure overlay is on top of everything else */
-        }
-
-        .loading-overlay-content {
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        /* Loader styles */
-        .loader {
-            display: block;
-            --height-of-loader: 4px;
-            --loader-color: #0071e2;
-            width: 130px;
-            height: var(--height-of-loader);
-            border-radius: 30px;
-            background-color: rgb(255, 255, 255);
-            position: relative;
-        }
-
-        .loader::before {
-            content: "";
-            position: absolute;
-            background: var(--loader-color);
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 100%;
-            border-radius: 30px;
-            animation: moving 1s ease-in-out infinite;
-        }
-
-        @keyframes moving {
-            50% {
-                width: 100%;
-            }
-
-            100% {
-                width: 0;
-                right: 0;
-                left: unset;
-            }
-        }
-
-         /* Play icon styling */
-         .play-icon {
-            cursor: pointer;
-            margin-left: 10px;
-            font-size: 24px;
-            color: #0f60b6; /* Same color as loader */
-        }
-
-        .play-icon:hover {
-            color: #0056b3; /* Darker on hover */
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&display=swap');
     </style>
 </head>
-<body>
-     <!-- Loading Overlay -->
-     <div id="loadingOverlay" class="loading-overlay">
-        <div class="loading-overlay-content">
-            <div class="loader"></div>
+<body class="font-anonymous bg-gray-100 text-gray-800">
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="fixed inset-0 bg-white z-50 flex items-center justify-center">
+        <div class="text-center">
+            <div class="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+            <p class="mt-4 text-lg">Loading...</p>
         </div>
     </div>
-    <div style="display: none;">
-        Prasanga Raman Pokharel is the user who has been interacting with me. He attends Itahari Namuna College and is involved in various tech-related projects, including developing applications using PyQt, Flask, and Laravel. He is working on several programming and software development projects, focusing on creating professional and functional applications.
-      </div>
-        <!-- Navbar -->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white">
-            <a class="navbar-brand" href="#">PRASANGA</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="project.html">Project</a>
-                    </li>
-                    <!-- Add more nav items as needed -->
-                </ul>
+
+    <!-- Navbar -->
+    <header class="bg-white shadow-md fixed w-full z-10">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-blue-600">PRASANGA</a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-gray-600 hover:text-blue-600 transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-600 hover:text-blue-600 transition-colors">About</a>
+                    <a href="project.html" class="text-gray-600 hover:text-blue-600 transition-colors">Project</a>
+                </div>
+                <button id="mobileMenuBtn" class="md:hidden text-gray-600">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </nav>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white w-full">
+            <a href="index.html" class="block py-2 px-4 text-gray-600 hover:bg-gray-100">Home</a>
+            <a href="about.html" class="block py-2 px-4 text-gray-600 hover:bg-gray-100">About</a>
+            <a href="project.html" class="block py-2 px-4 text-gray-600 hover:bg-gray-100">Project</a>
+        </div>
     </header>
 
-
     <!-- Content -->
-    <div id="content">
-   
-        <section class="professional-section">
-            <div class="content">
-                <div class="profile-img-container">
-                    <img src="prof.svg" class="profile-img" alt="Profile Image">
-                </div>
-                <i class="fas fa-play play-icon" id="playIcon"></i><br> <!-- Play icon -->
-
-                <a class="rse" href="tools.html">view resume</a>
-                
-                <h2>I am prasanga</h2>
-                <p id="typing-text">I am a dedicated professional with 2 years of experience as a Frontend and Backend Developer. Proficient in Python, Bootstrap, Php, JavaScript, Mysql, Php </p>
-
-                <div class="click">
-                    <button type="button" class="btn btn-primary">
-                        <a href="https://www.facebook.com/prasangapokharel?mibextid=LQQJ4d ">Contact Me to Make Website</a>
+    <div id="content" class="pt-20 pb-12">
+        <section class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <div class="relative inline-block">
+                    <img src="prof.svg" class="w-48 h-48 rounded-full border-4 border-blue-500 shadow-lg animate-pulse" alt="Profile Image">
+                    <button id="playIcon" class="absolute bottom-0 right-0 bg-white rounded-full p-2 shadow-md">
+                        <i class="fas fa-play text-blue-500"></i>
                     </button>
+                </div>
+                <a href="tools.html" class="inline-block mt-4 px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors">View Resume</a>
+                <h1 class="text-4xl font-bold mt-6 mb-2">I am Prasanga</h1>
+                <p id="typing-text" class="text-xl text-gray-600"></p>
+            </div>
 
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <a href="https://www.facebook.com/prasangapokharel?mibextid=LQQJ4d" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                    Contact Me to Make Website
+                </a>
+                <a href="https://github.com/prasangapokharel" class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition-colors">
+                    <i class="fab fa-github mr-2"></i> GitHub
+                </a>
+            </div>
 
-                    <a href="https://github.com/prasangapokharel">
-                        <button type="button" class="btn btn-dark">
-                        <i class="fa-brands fa-github"></i>
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-center mb-6">Qualifications</h2>
+                <div class="space-y-4">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <button class="w-full text-left font-bold text-blue-600" onclick="toggleCollapse('schoolCollapse')">
+                            School <i class="fas fa-chevron-down float-right"></i>
                         </button>
-                    </a>
-                
-
+                        <div id="schoolCollapse" class="hidden mt-4">
+                            <p><strong>Name:</strong> Our English Boarding School</p>
+                            <p><strong>Completed on:</strong> 2019 AD</p>
+                            <p><strong>Status:</strong> Finished</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <button class="w-full text-left font-bold text-blue-600" onclick="toggleCollapse('higherSchoolCollapse')">
+                            Higher School <i class="fas fa-chevron-down float-right"></i>
+                        </button>
+                        <div id="higherSchoolCollapse" class="hidden mt-4">
+                            <p><strong>Name:</strong> Merryland Higher Secondary</p>
+                            <p><strong>Completed:</strong> +2 at 2021-2022 AD</p>
+                            <p><strong>Status:</strong> Finished</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <button class="w-full text-left font-bold text-blue-600" onclick="toggleCollapse('bachelorCollapse')">
+                            Bachelor <i class="fas fa-chevron-down float-right"></i>
+                        </button>
+                        <div id="bachelorCollapse" class="hidden mt-4">
+                            <p><strong>Name:</strong> Itahati Namuna College</p>
+                            <p><strong>Course:</strong> BCA (Bachelor in Computer Application)</p>
+                            <p><strong>Status:</strong> Running</p>
+                        </div>
+                    </div>
                 </div>
+            </section>
 
-                
-
-                <section class="qualification-section">
-                    <h2>Qualifications</h2>
-
-                    <div class="qualification-item">
-                        <p>
-                            <a id="qf" class="btn btn-primary btn-sm" data-toggle="collapse" href="#schoolCollapse" role="button" aria-expanded="false" aria-controls="schoolCollapse">
-                                School
-                            </a>
-                        </p>
-                        <div class="collapse" id="schoolCollapse">
-                            <div class="card card-body" id="data">
-                                <strong>Name:</strong> Our English Boarding School<br>
-                                <strong>Completed on:</strong> 2019 AD<br>
-                                <strong>Status:</strong> Finished
-                            </div>
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-center mb-6">Language Knowledge</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <div class="flex items-center mb-2">
+                            <i class="fab fa-python text-2xl text-blue-500 mr-2"></i>
+                            <span class="font-bold">Python</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 80%"></div>
                         </div>
                     </div>
-
-                    <div class="qualification-item">
-                        <p>
-                            <a id="qf" class="btn btn-primary btn-sm" data-toggle="collapse" href="#higherSchoolCollapse" role="button" aria-expanded="false" aria-controls="higherSchoolCollapse">
-                                Higher School
-                            </a>
-                        </p>
-                        <div  class="collapse" id="higherSchoolCollapse">
-                            <div class="card card-body" id="data">                                <strong>Name:</strong> Merryland Higher Secondary<br>
-                                <strong>Completed:</strong> +2 at 2021-2022 AD<br>
-                                <strong>Status:</strong> Finished
-                            </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <div class="flex items-center mb-2">
+                            <i class="fab fa-php text-2xl text-blue-500 mr-2"></i>
+                            <span class="font-bold">PHP</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 60%"></div>
                         </div>
                     </div>
-
-                    <div class="qualification-item">
-                        <p>
-                            <a id="qf" class="btn btn-primary btn-sm" data-toggle="collapse" href="#bachelorCollapse" role="button" aria-expanded="false" aria-controls="bachelorCollapse">
-                                Bachelor
-                            </a>
-                        </p>
-                        <div class="collapse" id="bachelorCollapse">
-                            <div class="card card-body" id="data">                                <strong>Name:</strong> Itahati Namuna College<br>
-                                <strong>Course:</strong> BCA (Bachelor in Computer Application)<br>
-                                <strong>Status:</strong> Running
-                            </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <div class="flex items-center mb-2">
+                            <i class="fab fa-js text-2xl text-blue-500 mr-2"></i>
+                            <span class="font-bold">JavaScript</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 85%"></div>
                         </div>
                     </div>
-                </section>
-                <h2>Completed Projects </h2>
-
-                <!-- <section class="proj">
-
-                    <div class="card" style="width: 18rem;">
-                        <img src="pdf.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Divine PDF</h5>
-                          <p class="card-text">Flask based web application where you can Convert and Protects your pdf using DivineDocs</p>
-                          <a href="https://www.facebook.com/prasangapokharel?mibextid=LQQJ4d">
-                            <button class="button">
-                              <span>Buy Now</span>
-                            </button>
-                          </a>
-                          
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <div class="flex items-center mb-2">
+                            <i class="fab fa-bootstrap text-2xl text-blue-500 mr-2"></i>
+                            <span class="font-bold">Bootstrap</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 85%"></div>
+                        </div>
                     </div>
-                      </div>
-
-                    <div class="card" style="width: 18rem;">
-                        <img src="mail.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Bulk Mailer</h5>
-                          <p class="card-text">A QT based software design to send bulk email to customer in one click with html templates made using python</p>
-                          <a href="https://www.facebook.com/prasangapokharel?mibextid=LQQJ4d">
-                            <button class="button">
-                              <span>Buy Now</span>
-                            </button>
-                          </a>                        
-                        </div>
-                      </div>
-
-                      <div class="card" style="width: 18rem;">
-                        <img src="domain.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Turbo Domain Checker</h5>
-                          <p class="card-text">Turbo-Domain-Finder is a Flask-based web application which find available domain names efficiently.</p>
-                          <a href="https://herum.onrender.com/">
-                            <button class="button">
-                              <span>Inspect</span>
-                            </button>
-                          </a>
-                        </div>
-                      </div>
-
-                    <div class="card" style="width: 18rem;">
-                        <img src="rr.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Pathau-Code/fileShare</h5>
-                          <p class="card-text">Pathau.com is a opensource platform to share code file without any registration and login</p>
-                          <a href="https://www.pathau.com/">
-                            <button class="button">
-                              <span>Inspect</span>
-                            </button>
-                          </a>
-                        </div>
-                      </div>
-
-                      <div class="card" style="width: 18rem;">
-                        <img src="adm.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Fitnepal</h5>
-                          <p class="card-text">Fitnepal platform aims users to track their health datas like protein, calories, diet plan and workout videos</p>
-                          <a href="https://github.com/prasangapokharel/Fitnepal-Completed">
-                            <button class="button">
-                              <span>Inspect</span>
-                            </button>
-                          </a>
-                        </div>
-                      </div>
-
-                      <div class="card" style="width: 18rem;">
-                        <img src="showwifi.svg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Show WiFi Password</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="https://buymeacoffee.com/prasangapokharel/e/200896">
-                            <button class="button">
-                              <span>Buy</span>
-                            </button>
-                          </a>
-                        </div>
-                      </div>
-
-                </section> -->
-                <!-- <div class="banner">
-                    <h1 style="margin: 20px auto ; " >Services</h1>
-                    <img src="cvr.svg" alt="Banner Image">
-                </div> -->
-
-                <div class="skills">
-                    <h2>Language Knowledge</h2>
-
-                    <section class="programming-section">
-                        <div class="programming-language">
-                            <i class="fab fa-python"></i> Python
-                            <div class="progress-bar">
-                                <div class="progress" data-percentage="80%"></div>
-                            </div>
-                        </div>
-
-                        <div class="programming-language">
-                            <td><i class="fab fa-php"></i> PHP</td>
-                            <div class="progress-bar">
-                                <div class="progress" data-percentage="60%"></div>
-                            </div>
-                        </div>
-
-                        <div class="programming-language">
-                            <i class="fab fa-js"></i> JavaScript
-                            <div class="progress-bar">
-                                <div class="progress" data-percentage="85%"></div>
-                            </div>
-                        </div>
-
-                        <div class="programming-language">
-                            <i class="fab fa-bootstrap"></i> Bootstrap
-                            <div class="progress-bar">
-                                <div class="progress" data-percentage="85%"></div>
-                            </div>
-                        </div>
-
-
-                    </section>
                 </div>
-                <section class="expertise-section">
-                    <div class="expertise-card">
-                        <i class="fas fa-paint-brush"></i>
-                        <h3>Graphic Designer</h3>
-                        <p>Passionate about creating visually appealing designs that leave a lasting impression.</p>
-                    </div>
+            </section>
 
-                    <div class="expertise-card">
-                        <i class="fas fa-bullhorn"></i>
-                        <h3>Digital Marketing</h3>
-                        <p>Strategically promoting products and services to reach a wider audience and drive engagement.</p>
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-center mb-6">Expertise</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                        <i class="fas fa-paint-brush text-4xl text-blue-500 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Graphic Designer</h3>
+                        <p class="text-gray-600">Passionate about creating visually appealing designs that leave a lasting impression.</p>
                     </div>
-
-                    <div class="expertise-card">
-                        <i class="fas fa-code"></i>
-                        <h3>Frontend Developer</h3>
-                        <p>Building user-friendly and responsive websites with the latest technologies and best practices.</p>
+                    <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                        <i class="fas fa-bullhorn text-4xl text-blue-500 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Digital Marketing</h3>
+                        <p class="text-gray-600">Strategically promoting products and services to reach a wider audience and drive engagement.</p>
                     </div>
-
-                    <div class="expertise-card">
-                        <i class="fas fa-tools"></i>
-                        <h3>Tool Developer</h3>
-                        <p>Creating custom tools and applications to streamline processes and enhance productivity.</p>
+                    <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                        <i class="fas fa-code text-4xl text-blue-500 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Frontend Developer</h3>
+                        <p class="text-gray-600">Building user-friendly and responsive websites with the latest technologies and best practices.</p>
                     </div>
-                </section>
-            </div>
+                    <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                        <i class="fas fa-tools text-4xl text-blue-500 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Tool Developer</h3>
+                        <p class="text-gray-600">Creating custom tools and applications to streamline processes and enhance productivity.</p>
+                    </div>
+                </div>
+            </section>
         </section>
-  <!-- MP3 Audio -->
-  <audio id="myAudio">
-    <source src="dhera.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
-        <footer>
-            <div class="container">
-                <p>&copy; 2024 Prasanga. All rights reserved.</p>
-            </div>
-        </footer>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 Prasanga. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Audio Element -->
+    <audio id="myAudio">
+        <source src="dhera.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <script>
         // Function to create typing effect
-        function typeEffect(element, speed) {
-            const text = element.innerHTML;
-            element.innerHTML = "";
-
+        function typeEffect(element, text, speed) {
             let i = 0;
             const typingInterval = setInterval(() => {
                 if (i < text.length) {
@@ -377,51 +226,46 @@
             }, speed);
         }
 
-        // Typing effect configuration
-        const typingSpeed = 50; // Speed in milliseconds
-        const typingParagraph = document.getElementById('typing-text');
-
-        // Activate typing effect
-        typeEffect(typingParagraph, typingSpeed);
-
         // Simulate page load and loading state
         document.addEventListener('DOMContentLoaded', function () {
-            // Simulate a loading delay
             setTimeout(function () {
-                // Hide the loading overlay and show the content
                 document.getElementById('loadingOverlay').style.display = 'none';
                 document.getElementById('content').style.display = 'block';
-            }, 2000); // Simulating a 2 second loading time
+                
+                // Activate typing effect
+                const typingText = "I am a dedicated professional with 2 years of experience as a Frontend and Backend Developer. Proficient in Python, Bootstrap, PHP, JavaScript, MySQL.";
+                const typingSpeed = 50;
+                const typingElement = document.getElementById('typing-text');
+                typeEffect(typingElement, typingText, typingSpeed);
+            }, 2000);
         });
 
-        // Play icon click event with autoplay and toggle functionality
-document.getElementById('playIcon').addEventListener('click', function () {
-    const audio = document.getElementById('myAudio');
-    
-    // Check if audio is already playing
-    if (audio.paused) {
-        audio.play();
-        this.classList.remove('fa-play');
-        this.classList.add('fa-pause'); // Change icon to pause
-    } else {
-        audio.pause();
-        this.classList.remove('fa-pause');
-        this.classList.add('fa-play'); // Change icon back to play
-    }
-});
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        });
 
-    </script>
-    <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "Person",
-          "name": "Prasanga Raman Pokharel",
-          "alumniOf": "Itahari Namuna College",
-          "jobTitle": "Developer",
-          "description": "Prasanga Raman Pokharel is involved in developing applications using PyQt, Flask, and Laravel.",
-          "knowsAbout": ["Software Development", "Web Development", "Tech Projects"]
+        // Play icon click event
+        document.getElementById('playIcon').addEventListener('click', function () {
+            const audio = document.getElementById('myAudio');
+            const icon = this.querySelector('i');
+            
+            if (audio.paused) {
+                audio.play();
+                icon.classList.remove('fa-play');
+                icon.classList.add('fa-pause');
+            } else {
+                audio.pause();
+                icon.classList.remove('fa-pause');
+                icon.classList.add('fa-play');
+            }
+        });
+
+        // Toggle collapse function
+        function toggleCollapse(id) {
+            const element = document.getElementById(id);
+            element.classList.toggle('hidden');
         }
-        </script>
-        
+    </script>
 </body>
 </html>
