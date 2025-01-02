@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,218 +7,278 @@
     <meta name="description" content="Learn more about Prasanga Raman Pokharel, a tech enthusiast involved in various software development projects.">
     <title>Prasanga Pokharel - Tech Enthusiast and Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
-                        'anonymous': ['"Anonymous Pro"', 'monospace'],
+                        'space': ['Space Grotesk', 'sans-serif'],
                     },
                     animation: {
-                        'fade-in': 'fadeIn 1s ease-out',
-                        'slide-in': 'slideIn 0.5s ease-out',
-                        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'gradient': 'gradient 8s linear infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                        'shine': 'shine 1s forwards',
+                        'slide-up': 'slideUp 0.5s ease-out',
                     },
                     keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
+                        gradient: {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            }
                         },
-                        slideIn: {
-                            '0%': { transform: 'translateY(20px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
                         },
+                        shine: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(100%)' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(100%)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        }
                     },
                 },
             },
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3B82F6, #8B5CF6, #EC4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: gradient 8s linear infinite;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .shine-effect {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shine-effect::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.2) 50%,
+                transparent 100%
+            );
+            animation: shine 1.5s infinite;
+        }
+
+        .progress-bar {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            animation: shine 2s infinite;
+        }
     </style>
 </head>
-<body class="font-anonymous bg-gray-100 text-gray-800">
+<body class="font-space bg-gray-900 text-gray-100">
     <!-- Loading Overlay -->
-    <div id="loadingOverlay" class="fixed inset-0 bg-white z-50 flex items-center justify-center">
+    <div id="loadingOverlay" class="fixed inset-0 bg-gray-900 z-50 flex items-center justify-center">
         <div class="text-center">
-            <div class="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-            <p class="mt-4 text-lg">Loading...</p>
+            <div class="relative w-24 h-24">
+                <div class="absolute inset-0 border-4 border-blue-500/30 rounded-full"></div>
+                <div class="absolute inset-0 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+            <p class="mt-4 text-lg gradient-text font-bold">Initializing...</p>
         </div>
     </div>
 
     <!-- Navbar -->
-    <header class="bg-white shadow-md fixed w-full z-10">
-        <nav class="container mx-auto px-4 py-4">
+    <header class="fixed w-full z-40 transition-all duration-300" id="navbar">
+        <nav class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <a href="#" class="text-2xl font-bold text-blue-600">PRASANGA</a>
-                <div class="hidden md:flex space-x-6">
-                    <a href="index.html" class="text-gray-600 hover:text-blue-600 transition-colors">Home</a>
-                    <a href="about.html" class="text-gray-600 hover:text-blue-600 transition-colors">About</a>
-                    <a href="project.html" class="text-gray-600 hover:text-blue-600 transition-colors">Project</a>
+                <a href="#" class="text-2xl font-bold gradient-text">PRASANGA</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-300 hover:text-white transition-colors relative group">
+                        Home
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#about" class="text-gray-300 hover:text-white transition-colors relative group">
+                        About
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#projects" class="text-gray-300 hover:text-white transition-colors relative group">
+                        Projects
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span>
+                    </a>
                 </div>
-                <button id="mobileMenuBtn" class="md:hidden text-gray-600">
-                    <i class="fas fa-bars"></i>
+                <button id="mobileMenuBtn" class="md:hidden text-gray-300 hover:text-white transition-colors">
+                    <i class="ri-menu-line text-2xl"></i>
                 </button>
             </div>
         </nav>
         <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white w-full">
-            <a href="index.html" class="block py-2 px-4 text-gray-600 hover:bg-gray-100">Home</a>
-            <a href="about.html" class="block py-2 px-4 text-gray-600 hover:bg-gray-100">About</a>
-            <a href="project.html" class="block py-2 px-4 text-gray-600 hover:bg-gray-100">Project</a>
+        <div id="mobileMenu" class="hidden md:hidden">
+            <div class="glass-card mx-4 rounded-lg divide-y divide-gray-700">
+                <a href="#home" class="block py-3 px-6 text-gray-300 hover:text-white transition-colors">Home</a>
+                <a href="#about" class="block py-3 px-6 text-gray-300 hover:text-white transition-colors">About</a>
+                <a href="#projects" class="block py-3 px-6 text-gray-300 hover:text-white transition-colors">Projects</a>
+            </div>
         </div>
     </header>
 
-    <!-- Content -->
-    <div id="content" class="pt-20 pb-12">
-        <section class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <div class="relative inline-block">
-                    <img src="prof.svg" class="w-48 h-48 rounded-full border-4 border-blue-500 shadow-lg animate-pulse" alt="Profile Image">
-                    <button id="playIcon" class="absolute bottom-0 right-0 bg-white rounded-full p-2 shadow-md">
-                        <i class="fas fa-play text-blue-500"></i>
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 pb-12 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-purple-500/10"></div>
+        <div class="container mx-auto px-6 relative">
+            <div class="text-center" data-aos="fade-up">
+                <div class="relative inline-block mb-8">
+                    <div class="w-48 h-48 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 p-1 animate-float">
+                        <img src="prof.svg" class="w-full h-full rounded-full object-cover" alt="Profile Image">
+                    </div>
+                    <button id="playIcon" class="absolute bottom-0 right-0 bg-white text-blue-500 rounded-full p-3 shadow-lg hover:scale-110 transition-transform">
+                        <i class="ri-play-fill text-xl"></i>
                     </button>
                 </div>
-                <a href="tools.html" class="inline-block mt-4 px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors">View Resume</a>
-                <h1 class="text-4xl font-bold mt-6 mb-2">I am Prasanga</h1>
-                <p id="typing-text" class="text-xl text-gray-600"></p>
+                <h1 class="text-5xl font-bold mb-4">I am <span class="gradient-text">Prasanga</span></h1>
+                <p id="typing-text" class="text-xl text-gray-400 mb-8"></p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="tools.html" class="group relative px-8 py-3 bg-blue-600 rounded-full overflow-hidden shine-effect">
+                        <span class="relative z-10">View Resume</span>
+                    </a>
+                    <a href="https://github.com/prasangapokharel" class="group px-8 py-3 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors">
+                        <i class="ri-github-fill mr-2"></i>
+                        GitHub
+                    </a>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="flex flex-wrap justify-center gap-4 mb-12">
-                <a href="https://www.facebook.com/prasangapokharel?mibextid=LQQJ4d" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
-                    Contact Me to Make Website
-                </a>
-                <a href="https://github.com/prasangapokharel" class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition-colors">
-                    <i class="fab fa-github mr-2"></i> GitHub
-                </a>
+    <!-- Qualifications Section -->
+    <section class="py-20 bg-gray-800/50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Qualifications</h2>
+            <div class="space-y-6 max-w-3xl mx-auto">
+                <div class="glass-card rounded-xl p-6" data-aos="fade-up">
+                    <button class="w-full text-left font-bold text-blue-400 flex justify-between items-center" onclick="toggleCollapse('schoolCollapse')">
+                        <span>School</span>
+                        <i class="ri-arrow-down-s-line transition-transform duration-300"></i>
+                    </button>
+                    <div id="schoolCollapse" class="hidden mt-4 space-y-2 text-gray-300">
+                        <p><span class="text-blue-400">Name:</span> Our English Boarding School</p>
+                        <p><span class="text-blue-400">Completed on:</span> 2019 AD</p>
+                        <p><span class="text-blue-400">Status:</span> Finished</p>
+                    </div>
+                </div>
+                <!-- Add other qualification cards similarly -->
             </div>
+        </div>
+    </section>
 
-            <section class="mb-12">
-                <h2 class="text-3xl font-bold text-center mb-6">Qualifications</h2>
-                <div class="space-y-4">
-                    <div class="bg-white rounded-lg shadow-md p-6">
-                        <button class="w-full text-left font-bold text-blue-600" onclick="toggleCollapse('schoolCollapse')">
-                            School <i class="fas fa-chevron-down float-right"></i>
-                        </button>
-                        <div id="schoolCollapse" class="hidden mt-4">
-                            <p><strong>Name:</strong> Our English Boarding School</p>
-                            <p><strong>Completed on:</strong> 2019 AD</p>
-                            <p><strong>Status:</strong> Finished</p>
-                        </div>
+    <!-- Skills Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Skills & Technologies</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="glass-card rounded-xl p-6" data-aos="fade-up">
+                    <div class="flex items-center mb-4">
+                        <i class="ri-python-fill text-3xl text-blue-400 mr-3"></i>
+                        <span class="font-bold text-lg">Python</span>
                     </div>
-                    <div class="bg-white rounded-lg shadow-md p-6">
-                        <button class="w-full text-left font-bold text-blue-600" onclick="toggleCollapse('higherSchoolCollapse')">
-                            Higher School <i class="fas fa-chevron-down float-right"></i>
-                        </button>
-                        <div id="higherSchoolCollapse" class="hidden mt-4">
-                            <p><strong>Name:</strong> Merryland Higher Secondary</p>
-                            <p><strong>Completed:</strong> +2 at 2021-2022 AD</p>
-                            <p><strong>Status:</strong> Finished</p>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-md p-6">
-                        <button class="w-full text-left font-bold text-blue-600" onclick="toggleCollapse('bachelorCollapse')">
-                            Bachelor <i class="fas fa-chevron-down float-right"></i>
-                        </button>
-                        <div id="bachelorCollapse" class="hidden mt-4">
-                            <p><strong>Name:</strong> Itahati Namuna College</p>
-                            <p><strong>Course:</strong> BCA (Bachelor in Computer Application)</p>
-                            <p><strong>Status:</strong> Running</p>
-                        </div>
+                    <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-blue-500 to-purple-500 w-[80%] progress-bar"></div>
                     </div>
                 </div>
-            </section>
+                <!-- Add other skill cards similarly -->
+            </div>
+        </div>
+    </section>
 
-            <section class="mb-12">
-                <h2 class="text-3xl font-bold text-center mb-6">Language Knowledge</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-white rounded-lg shadow-md p-6">
-                        <div class="flex items-center mb-2">
-                            <i class="fab fa-python text-2xl text-blue-500 mr-2"></i>
-                            <span class="font-bold">Python</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-md p-6">
-                        <div class="flex items-center mb-2">
-                            <i class="fab fa-php text-2xl text-blue-500 mr-2"></i>
-                            <span class="font-bold">PHP</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 60%"></div>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-md p-6">
-                        <div class="flex items-center mb-2">
-                            <i class="fab fa-js text-2xl text-blue-500 mr-2"></i>
-                            <span class="font-bold">JavaScript</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-md p-6">
-                        <div class="flex items-center mb-2">
-                            <i class="fab fa-bootstrap text-2xl text-blue-500 mr-2"></i>
-                            <span class="font-bold">Bootstrap</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 85%"></div>
-                        </div>
-                    </div>
+    <!-- Expertise Section -->
+    <section class="py-20 bg-gray-800/50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Expertise</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="glass-card rounded-xl p-8 text-center group hover:bg-blue-500/10 transition-colors" data-aos="fade-up">
+                    <i class="ri-paint-brush-line text-5xl text-blue-400 mb-6 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-xl font-bold mb-4">Graphic Designer</h3>
+                    <p class="text-gray-400">Passionate about creating visually appealing designs that leave a lasting impression.</p>
                 </div>
-            </section>
+                <!-- Add other expertise cards similarly -->
+            </div>
+        </div>
+    </section>
 
-            <section class="mb-12">
-                <h2 class="text-3xl font-bold text-center mb-6">Expertise</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-white rounded-lg shadow-md p-6 text-center">
-                        <i class="fas fa-paint-brush text-4xl text-blue-500 mb-4"></i>
-                        <h3 class="text-xl font-bold mb-2">Graphic Designer</h3>
-                        <p class="text-gray-600">Passionate about creating visually appealing designs that leave a lasting impression.</p>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-md p-6 text-center">
-                        <i class="fas fa-bullhorn text-4xl text-blue-500 mb-4"></i>
-                        <h3 class="text-xl font-bold mb-2">Digital Marketing</h3>
-                        <p class="text-gray-600">Strategically promoting products and services to reach a wider audience and drive engagement.</p>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-md p-6 text-center">
-                        <i class="fas fa-code text-4xl text-blue-500 mb-4"></i>
-                        <h3 class="text-xl font-bold mb-2">Frontend Developer</h3>
-                        <p class="text-gray-600">Building user-friendly and responsive websites with the latest technologies and best practices.</p>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-md p-6 text-center">
-                        <i class="fas fa-tools text-4xl text-blue-500 mb-4"></i>
-                        <h3 class="text-xl font-bold mb-2">Tool Developer</h3>
-                        <p class="text-gray-600">Creating custom tools and applications to streamline processes and enhance productivity.</p>
-                    </div>
-                </div>
-            </section>
-        </section>
-    </div>
-
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2024 Prasanga. All rights reserved.</p>
+    <!-- Footer -->
+    <footer class="py-8 bg-gray-800/80">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-400">&copy; 2024 Prasanga. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- Audio Element -->
     <audio id="myAudio">
         <source src="dhera.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
     </audio>
 
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Function to create typing effect
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-gray-900/80', 'backdrop-blur-lg');
+            } else {
+                navbar.classList.remove('bg-gray-900/80', 'backdrop-blur-lg');
+            }
+        });
+
+        // Typing effect
         function typeEffect(element, text, speed) {
             let i = 0;
+            element.textContent = '';
             const typingInterval = setInterval(() => {
                 if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
+                    element.textContent += text.charAt(i);
                     i++;
                 } else {
                     clearInterval(typingInterval);
@@ -226,45 +286,57 @@
             }, speed);
         }
 
-        // Simulate page load and loading state
+        // Page load
         document.addEventListener('DOMContentLoaded', function () {
             setTimeout(function () {
-                document.getElementById('loadingOverlay').style.display = 'none';
-                document.getElementById('content').style.display = 'block';
+                document.getElementById('loadingOverlay').classList.add('animate-slide-up');
+                setTimeout(() => {
+                    document.getElementById('loadingOverlay').style.display = 'none';
+                }, 500);
                 
-                // Activate typing effect
-                const typingText = "I am a dedicated professional with 2 years of experience as a Frontend and Backend Developer. Proficient in Python, Bootstrap, PHP, JavaScript, MySQL.";
+                const typingText = "Frontend & Backend Developer | 2 Years Experience | Python • Bootstrap • PHP • JavaScript • MySQL";
                 const typingSpeed = 50;
-                const typingElement = document.getElementById('typing-text');
-                typeEffect(typingElement, typingText, typingSpeed);
+                typeEffect(document.getElementById('typing-text'), typingText, typingSpeed);
             }, 2000);
         });
 
-        // Mobile menu toggle
+        // Mobile menu
         document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-            document.getElementById('mobileMenu').classList.toggle('hidden');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const icon = this.querySelector('i');
+            
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('ri-close-line');
+                icon.classList.add('ri-menu-line');
+            } else {
+                icon.classList.remove('ri-menu-line');
+                icon.classList.add('ri-close-line');
+            }
         });
 
-        // Play icon click event
+        // Audio player
         document.getElementById('playIcon').addEventListener('click', function () {
             const audio = document.getElementById('myAudio');
             const icon = this.querySelector('i');
             
             if (audio.paused) {
                 audio.play();
-                icon.classList.remove('fa-play');
-                icon.classList.add('fa-pause');
+                icon.classList.remove('ri-play-fill');
+                icon.classList.add('ri-pause-fill');
             } else {
                 audio.pause();
-                icon.classList.remove('fa-pause');
-                icon.classList.add('fa-play');
+                icon.classList.remove('ri-pause-fill');
+                icon.classList.add('ri-play-fill');
             }
         });
 
-        // Toggle collapse function
+        // Collapse functionality
         function toggleCollapse(id) {
             const element = document.getElementById(id);
+            const icon = element.previousElementSibling.querySelector('i');
             element.classList.toggle('hidden');
+            icon.style.transform = element.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
         }
     </script>
 </body>
