@@ -11,9 +11,22 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
+                    colors: {
+                        gold: {
+                            50: '#fff9e6',
+                            100: '#ffedb3',
+                            200: '#ffe180',
+                            300: '#ffd54d',
+                            400: '#ffc91a',
+                            500: '#e6b300',
+                            600: '#b38900',
+                            700: '#805f00',
+                            800: '#4d3900',
+                            900: '#1a1300',
+                        },
+                    },
                     fontFamily: {
                         'space': ['Space Grotesk', 'sans-serif'],
                     },
@@ -22,6 +35,7 @@
                         'float': 'float 3s ease-in-out infinite',
                         'shine': 'shine 1s forwards',
                         'slide-up': 'slideUp 0.5s ease-out',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
                     },
                     keyframes: {
                         gradient: {
@@ -45,6 +59,10 @@
                         slideUp: {
                             '0%': { transform: 'translateY(100%)', opacity: '0' },
                             '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        glow: {
+                            '0%': { 'box-shadow': '0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 15px #ffd700' },
+                            '100%': { 'box-shadow': '0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ffd700' }
                         }
                     },
                 },
@@ -55,7 +73,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
         
         .gradient-text {
-            background: linear-gradient(90deg, #3B82F6, #8B5CF6, #EC4899);
+            background: linear-gradient(90deg, #ffd700, #b38900, #ffd700);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -64,9 +82,9 @@
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 215, 0, 0.1);
         }
 
         .shine-effect {
@@ -84,7 +102,7 @@
             background: linear-gradient(
                 120deg,
                 transparent 0%,
-                rgba(255, 255, 255, 0.2) 50%,
+                rgba(255, 215, 0, 0.2) 50%,
                 transparent 100%
             );
             animation: shine 1.5s infinite;
@@ -105,20 +123,52 @@
             background: linear-gradient(
                 90deg,
                 transparent,
-                rgba(255, 255, 255, 0.2),
+                rgba(255, 215, 0, 0.2),
                 transparent
             );
             animation: shine 2s infinite;
         }
+
+        .golden-border {
+            border: 2px solid transparent;
+            background: linear-gradient(45deg, black, black) padding-box,
+                       linear-gradient(45deg, #ffd700, #b38900) border-box;
+        }
+
+        .profile-image-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+        }
+
+        .profile-image-container::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: linear-gradient(45deg, #ffd700, #b38900, #ffd700);
+            border-radius: 50%;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .profile-image {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid black;
+            z-index: 1;
+        }
     </style>
 </head>
-<body class="font-space bg-gray-900 text-gray-100">
+<body class="font-space bg-black text-gray-100">
     <!-- Loading Overlay -->
-    <div id="loadingOverlay" class="fixed inset-0 bg-gray-900 z-50 flex items-center justify-center">
+    <div id="loadingOverlay" class="fixed inset-0 bg-black z-50 flex items-center justify-center">
         <div class="text-center">
             <div class="relative w-24 h-24">
-                <div class="absolute inset-0 border-4 border-blue-500/30 rounded-full"></div>
-                <div class="absolute inset-0 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                <div class="absolute inset-0 border-4 border-gold-500/30 rounded-full"></div>
+                <div class="absolute inset-0 border-4 border-gold-500 border-t-transparent rounded-full animate-spin"></div>
             </div>
             <p class="mt-4 text-lg gradient-text font-bold">Initializing...</p>
         </div>
@@ -130,54 +180,52 @@
             <div class="flex justify-between items-center">
                 <a href="#" class="text-2xl font-bold gradient-text">PRASANGA</a>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-300 hover:text-white transition-colors relative group">
+                    <a href="#home" class="text-gold-200 hover:text-gold-400 transition-colors relative group">
                         Home
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gold-500 transition-all group-hover:w-full"></span>
                     </a>
-                    <a href="#about" class="text-gray-300 hover:text-white transition-colors relative group">
+                    <a href="#about" class="text-gold-200 hover:text-gold-400 transition-colors relative group">
                         About
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gold-500 transition-all group-hover:w-full"></span>
                     </a>
-                    <a href="#projects" class="text-gray-300 hover:text-white transition-colors relative group">
+                    <a href="#projects" class="text-gold-200 hover:text-gold-400 transition-colors relative group">
                         Projects
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gold-500 transition-all group-hover:w-full"></span>
                     </a>
                 </div>
-                <button id="mobileMenuBtn" class="md:hidden text-gray-300 hover:text-white transition-colors">
+                <button id="mobileMenuBtn" class="md:hidden text-gold-200 hover:text-gold-400 transition-colors">
                     <i class="ri-menu-line text-2xl"></i>
                 </button>
             </div>
         </nav>
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden">
-            <div class="glass-card mx-4 rounded-lg divide-y divide-gray-700">
-                <a href="#home" class="block py-3 px-6 text-gray-300 hover:text-white transition-colors">Home</a>
-                <a href="#about" class="block py-3 px-6 text-gray-300 hover:text-white transition-colors">About</a>
-                <a href="#projects" class="block py-3 px-6 text-gray-300 hover:text-white transition-colors">Projects</a>
+            <div class="glass-card mx-4 rounded-lg divide-y divide-gold-500/20">
+                <a href="#home" class="block py-3 px-6 text-gold-200 hover:text-gold-400 transition-colors">Home</a>
+                <a href="#about" class="block py-3 px-6 text-gold-200 hover:text-gold-400 transition-colors">About</a>
+                <a href="#projects" class="block py-3 px-6 text-gold-200 hover:text-gold-400 transition-colors">Projects</a>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center justify-center pt-20 pb-12 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-purple-500/10"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-gold-900/20 to-black"></div>
         <div class="container mx-auto px-6 relative">
             <div class="text-center" data-aos="fade-up">
-                <div class="relative inline-block mb-8">
-                    <div class="w-48 h-48 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 p-1 animate-float">
-                        <img src="prof.svg" class="w-full h-full rounded-full object-cover" alt="Profile Image">
-                    </div>
-                    <button id="playIcon" class="absolute bottom-0 right-0 bg-white text-blue-500 rounded-full p-3 shadow-lg hover:scale-110 transition-transform">
+                <div class="profile-image-container mb-8">
+                    <img src="prof.svg" class="profile-image" alt="Profile Image">
+                    <button id="playIcon" class="absolute bottom-0 right-0 bg-black text-gold-500 rounded-full p-3 shadow-lg hover:scale-110 transition-transform z-10">
                         <i class="ri-play-fill text-xl"></i>
                     </button>
                 </div>
                 <h1 class="text-5xl font-bold mb-4">I am <span class="gradient-text">Prasanga</span></h1>
-                <p id="typing-text" class="text-xl text-gray-400 mb-8"></p>
+                <p id="typing-text" class="text-xl text-gold-200 mb-8"></p>
                 <div class="flex flex-wrap justify-center gap-4">
-                    <a href="tools.html" class="group relative px-8 py-3 bg-blue-600 rounded-full overflow-hidden shine-effect">
-                        <span class="relative z-10">View Resume</span>
+                    <a href="tools.html" class="group relative px-8 py-3 bg-gold-600 text-black rounded-full overflow-hidden shine-effect hover:bg-gold-500 transition-colors">
+                        <span class="relative z-10 font-bold">View Resume</span>
                     </a>
-                    <a href="https://github.com/prasangapokharel" class="group px-8 py-3 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors">
+                    <a href="https://github.com/prasangapokharel" class="group px-8 py-3 golden-border rounded-full hover:bg-gold-900/20 transition-colors">
                         <i class="ri-github-fill mr-2"></i>
                         GitHub
                     </a>
@@ -186,65 +234,110 @@
         </div>
     </section>
 
-    <!-- Qualifications Section -->
-    <section class="py-20 bg-gray-800/50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Qualifications</h2>
-            <div class="space-y-6 max-w-3xl mx-auto">
-                <div class="glass-card rounded-xl p-6" data-aos="fade-up">
-                    <button class="w-full text-left font-bold text-blue-400 flex justify-between items-center" onclick="toggleCollapse('schoolCollapse')">
-                        <span>School</span>
-                        <i class="ri-arrow-down-s-line transition-transform duration-300"></i>
-                    </button>
-                    <div id="schoolCollapse" class="hidden mt-4 space-y-2 text-gray-300">
-                        <p><span class="text-blue-400">Name:</span> Our English Boarding School</p>
-                        <p><span class="text-blue-400">Completed on:</span> 2019 AD</p>
-                        <p><span class="text-blue-400">Status:</span> Finished</p>
-                    </div>
-                </div>
-                <!-- Add other qualification cards similarly -->
-            </div>
-        </div>
-    </section>
-
     <!-- Skills Section -->
-    <section class="py-20">
+    <section class="py-20 bg-black/50">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Skills & Technologies</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="glass-card rounded-xl p-6" data-aos="fade-up">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="glass-card rounded-xl p-6 golden-border" data-aos="fade-up">
                     <div class="flex items-center mb-4">
-                        <i class="ri-python-fill text-3xl text-blue-400 mr-3"></i>
+                        <i class="ri-python-fill text-3xl text-gold-500 mr-3"></i>
                         <span class="font-bold text-lg">Python</span>
                     </div>
-                    <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
-                        <div class="h-full bg-gradient-to-r from-blue-500 to-purple-500 w-[80%] progress-bar"></div>
+                    <div class="h-2 bg-gold-900 rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-gold-400 to-gold-600 w-[80%] progress-bar"></div>
                     </div>
                 </div>
-                <!-- Add other skill cards similarly -->
+
+                <div class="glass-card rounded-xl p-6 golden-border" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <i class="ri-code-s-slash-fill text-3xl text-gold-500 mr-3"></i>
+                        <span class="font-bold text-lg">PHP</span>
+                    </div>
+                    <div class="h-2 bg-gold-900 rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-gold-400 to-gold-600 w-[75%] progress-bar"></div>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-xl p-6 golden-border" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <i class="ri-tailwind-css-fill text-3xl text-gold-500 mr-3"></i>
+                        <span class="font-bold text-lg">Tailwind CSS</span>
+                    </div>
+                    <div class="h-2 bg-gold-900 rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-gold-400 to-gold-600 w-[90%] progress-bar"></div>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-xl p-6 golden-border" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <i class="ri-code-box-fill text-3xl text-gold-500 mr-3"></i>
+                        <span class="font-bold text-lg">C Programming</span>
+                    </div>
+                    <div class="h-2 bg-gold-900 rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-gold-400 to-gold-600 w-[70%] progress-bar"></div>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-xl p-6 golden-border" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex items-center mb-4">
+                        <i class="ri-javascript-fill text-3xl text-gold-500 mr-3"></i>
+                        <span class="font-bold text-lg">JavaScript</span>
+                    </div>
+                    <div class="h-2 bg-gold-900 rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-gold-400 to-gold-600 w-[85%] progress-bar"></div>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-xl p-6 golden-border" data-aos="fade-up" data-aos-delay="500">
+                    <div class="flex items-center mb-4">
+                        <i class="ri-database-2-fill text-3xl text-gold-500 mr-3"></i>
+                        <span class="font-bold text-lg">MySQL</span>
+                    </div>
+                    <div class="h-2 bg-gold-900 rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-gold-400 to-gold-600 w-[80%] progress-bar"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Expertise Section -->
-    <section class="py-20 bg-gray-800/50">
+    <section class="py-20">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Expertise</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="glass-card rounded-xl p-8 text-center group hover:bg-blue-500/10 transition-colors" data-aos="fade-up">
-                    <i class="ri-paint-brush-line text-5xl text-blue-400 mb-6 group-hover:scale-110 transition-transform"></i>
+                <div class="glass-card rounded-xl p-8 text-center group hover:bg-gold-900/20 transition-colors golden-border" data-aos="fade-up">
+                    <i class="ri-paint-brush-line text-5xl text-gold-500 mb-6 group-hover:scale-110 transition-transform"></i>
                     <h3 class="text-xl font-bold mb-4">Graphic Designer</h3>
-                    <p class="text-gray-400">Passionate about creating visually appealing designs that leave a lasting impression.</p>
+                    <p class="text-gold-200">Passionate about creating visually appealing designs that leave a lasting impression.</p>
                 </div>
-                <!-- Add other expertise cards similarly -->
+
+                <div class="glass-card rounded-xl p-8 text-center group hover:bg-gold-900/20 transition-colors golden-border" data-aos="fade-up" data-aos-delay="100">
+                    <i class="ri-code-box-line text-5xl text-gold-500 mb-6 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-xl font-bold mb-4">Full Stack Developer</h3>
+                    <p class="text-gold-200">Building robust and scalable applications with modern technologies.</p>
+                </div>
+
+                <div class="glass-card rounded-xl p-8 text-center group hover:bg-gold-900/20 transition-colors golden-border" data-aos="fade-up" data-aos-delay="200">
+                    <i class="ri-layout-masonry-line text-5xl text-gold-500 mb-6 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-xl font-bold mb-4">UI/UX Designer</h3>
+                    <p class="text-gold-200">Creating intuitive and engaging user experiences through thoughtful design.</p>
+                </div>
+
+                <div class="glass-card rounded-xl p-8 text-center group hover:bg-gold-900/20 transition-colors golden-border" data-aos="fade-up" data-aos-delay="300">
+                    <i class="ri-database-2-line text-5xl text-gold-500 mb-6 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-xl font-bold mb-4">Database Expert</h3>
+                    <p class="text-gold-200">Designing and optimizing database structures for optimal performance.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-8 bg-gray-800/80">
+    <footer class="py-8 bg-black border-t border-gold-500/20">
         <div class="container mx-auto px-6 text-center">
-            <p class="text-gray-400">&copy; 2024 Prasanga. All rights reserved.</p>
+            <p class="text-gold-200">&copy; 2024 Prasanga. All rights reserved.</p>
         </div>
     </footer>
 
@@ -259,16 +352,17 @@
         // Initialize AOS
         AOS.init({
             duration: 1000,
-            once: true
+            once: true,
+            offset: 100
         });
 
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
-                navbar.classList.add('bg-gray-900/80', 'backdrop-blur-lg');
+                navbar.classList.add('bg-black/80', 'backdrop-blur-lg', 'border-b', 'border-gold-500/20');
             } else {
-                navbar.classList.remove('bg-gray-900/80', 'backdrop-blur-lg');
+                navbar.classList.remove('bg-black/80', 'backdrop-blur-lg', 'border-b', 'border-gold-500/20');
             }
         });
 
@@ -282,6 +376,10 @@
                     i++;
                 } else {
                     clearInterval(typingInterval);
+                    setTimeout(() => {
+                        element.textContent = '';
+                        typeEffect(element, text, speed);
+                    }, 3000);
                 }
             }, speed);
         }
@@ -294,7 +392,7 @@
                     document.getElementById('loadingOverlay').style.display = 'none';
                 }, 500);
                 
-                const typingText = "Frontend & Backend Developer | 2 Years Experience | Python • Bootstrap • PHP • JavaScript • MySQL";
+                const typingText = "Full Stack Developer | Python • PHP • Tailwind • C • JavaScript • MySQL";
                 const typingSpeed = 50;
                 typeEffect(document.getElementById('typing-text'), typingText, typingSpeed);
             }, 2000);
@@ -330,14 +428,6 @@
                 icon.classList.add('ri-play-fill');
             }
         });
-
-        // Collapse functionality
-        function toggleCollapse(id) {
-            const element = document.getElementById(id);
-            const icon = element.previousElementSibling.querySelector('i');
-            element.classList.toggle('hidden');
-            icon.style.transform = element.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
-        }
     </script>
 </body>
 </html>
