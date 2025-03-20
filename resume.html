@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prasanga Pokharel - Resume</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    :root {
+      --primary-color: #000000;
+      --secondary-color: #4B5563;
+      --accent-color: #ffffff;
+      --background-color: #ffffff;
+      --border-color: #E5E7EB;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f3f4f6;
+      color: var(--primary-color);
+      line-height: 1.5;
+    }
+    
+    /* A4 size in pixels at 96 DPI */
+    .a4-container {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 20mm;
+      margin: 0 auto;
+      background-color: var(--background-color);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    .section {
+      margin-bottom: 1.5rem;
+    }
+    
+    .section-title {
+      font-weight: 600;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      flex-grow: 1;
+      height: 1px;
+      background-color: var(--border-color);
+      margin-left: 0.75rem;
+    }
+    
+    .skill-bar {
+      height: 6px;
+      background-color: #E5E7EB;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    
+    .skill-progress {
+      height: 100%;
+      background-color: #000000;
+      border-radius: 3px;
+    }
+    
+    .tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background-color: #F3F4F6;
+      border: 1px solid #E5E7EB;
+      border-radius: 9999px;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.375rem;
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+      background-color: #000000;
+    }
+    
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: 0.375rem;
+      top: 1.25rem;
+      width: 1px;
+      height: calc(100% - 0.5rem);
+      background-color: #E5E7EB;
+    }
+    
+    .timeline-item:last-child::after {
+      display: none;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    
+    .contact-item i {
+      width: 1.5rem;
+      margin-right: 0.5rem;
+      text-align: center;
+    }
+    
+    @media print {
+      body {
+        background-color: var(--background-color);
+        margin: 0;
+        padding: 0;
+      }
+      
+      .a4-container {
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        padding: 10mm;
+      }
+      
+      .no-print {
+        display: none !important;
+      }
+      
+      .page-break {
+        page-break-before: always;
+      }
+      
+      .avoid-break {
+        page-break-inside: avoid;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .a4-container {
+        width: 100%;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body class="py-8">
+  <!-- Print Button -->
+  <button onclick="window.print()" class="fixed top-4 right-4 bg-black text-white px-4 py-2 rounded shadow-lg hover:bg-gray-800 transition-colors no-print">
+    <i class="fas fa-print mr-2"></i> Print Resume
+  </button>
+  
+  <div class="a4-container">
+    <!-- Header Section -->
+    <header class="flex flex-col md:flex-row items-center md:items-start gap-6 mb-8 avoid-break">
+      <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-black">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-AjDJw4hSFtQwhU0C7o5Y15NaEG731D.png" alt="Prasanga Pokharel" class="w-full h-full object-cover">
+      </div>
+      
+      <div class="flex-1 text-center md:text-left">
+        <h1 class="text-3xl font-bold mb-1">Prasanga Pokharel</h1>
+        <p class="text-lg text-gray-600 mb-4">Full Stack Developer</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>prasangapokharel@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>+977 9765470926</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Inaruwa, Sunsari, Nepal</span>
+          </div>
+          <div class="contact-item">
+            <i class="fab fa-github"></i>
+            <span>github.com/prasangapokharel</span>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Left Column -->
+      <div class="md:col-span-2">
+        <!-- Professional Summary -->
+        <section class="section avoid-break">
+          <h2 class="section-title">Professional Summary</h2>
+          <p class="mb-4">
+            Dedicated Full Stack Developer with expertise in web development, digital marketing, and software engineering. Skilled in creating responsive, user-friendly applications and websites using modern technologies. Passionate about delivering high-quality solutions that meet client needs and exceed expectations.
+          </p>
+        </section>
+        
+        <!-- Work Experience -->
+        <section class="section avoid-break">
+          <h2 class="section-title">Work Experience</h2>
+          
+          <div class="timeline-item">
+            <h3 class="font-semibold">Full Stack Developer</h3>
+            <p class="text-sm text-gray-600 mb-1">Prabidhi Solution | 2023 - Present</p>
+            <p class="mb-2">Led development of Smart Board solutions and digital technology products across Nepal.</p>
+            <ul class="list-disc list-inside text-sm text-gray-700">
+              <li>Developed responsive web applications using Next.js and Tailwind CSS</li>
+              <li>Implemented database solutions with MongoDB for scalable data storage</li>
+              <li>Managed project timelines and coordinated with cross-functional teams</li>
+            </ul>
+          </div>
+          
+          <div class="timeline-item">
+            <h3 class="font-semibold">Web Developer</h3>
+            <p class="text-sm text-gray-600 mb-1">Sukuna Secondary School | 2022 - 2023</p>
+            <p class="mb-2">Created comprehensive school management system with integrated features.</p>
+            <ul class="list-disc list-inside text-sm text-gray-700">
+              <li>Built responsive educational platform with PHP and JavaScript</li>
+              <li>Implemented notice board and publication management systems</li>
+              <li>Optimized site performance for both desktop and mobile devices</li>
+            </ul>
+          </div>
+          
+          <div class="timeline-item">
+            <h3 class="font-semibold">Frontend Developer</h3>
+            <p class="text-sm text-gray-600 mb-1">Aryal Recruitment | 2021 - 2022</p>
+            <p class="mb-2">Designed modern recruitment platform connecting businesses with talent.</p>
+            <ul class="list-disc list-inside text-sm text-gray-700">
+              <li>Created responsive UI with React and Tailwind CSS</li>
+              <li>Implemented user authentication and profile management</li>
+              <li>Collaborated with backend developers to integrate APIs</li>
+            </ul>
+          </div>
+        </section>
+        
+        <!-- Projects -->
+        <section class="section avoid-break">
+          <h2 class="section-title">Key Projects</h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="border border-gray-200 rounded-lg p-4">
+              <h3 class="font-semibold">Nepal Cyber Club</h3>
+              <p class="text-sm text-gray-600 mb-2">Educational Platform</p>
+              <p class="text-sm mb-2">Premium courses in cybersecurity, programming, and design with user authentication and course management.</p>
+              <p class="text-xs text-gray-700">React, Node.js, MongoDB</p>
+            </div>
+            
+            <div class="border border-gray-200 rounded-lg p-4">
+              <h3 class="font-semibold">Phonesium Space</h3>
+              <p class="text-sm text-gray-600 mb-2">Mobile Technology Platform</p>
+              <p class="text-sm mb-2">Secure platform with advanced security measures including CAPTCHA verification and user authentication.</p>
+              <p class="text-xs text-gray-700">PHP, JavaScript, OAuth</p>
+            </div>
+            
+            <div class="border border-gray-200 rounded-lg p-4">
+              <h3 class="font-semibold">Mosquito AI</h3>
+              <p class="text-sm text-gray-600 mb-2">AI Assistant</p>
+              <p class="text-sm mb-2">Nepal's premier AI assistant with natural language processing and contextual responses.</p>
+              <p class="text-xs text-gray-700">Python, TensorFlow, React</p>
+            </div>
+            
+            <div class="border border-gray-200 rounded-lg p-4">
+              <h3 class="font-semibold">Bulk Mailer</h3>
+              <p class="text-sm text-gray-600 mb-2">Email Marketing Tool</p>
+              <p class="text-sm mb-2">QT-based software for sending bulk emails with HTML templates for marketing campaigns.</p>
+              <p class="text-xs text-gray-700">Python, QT, SMTP</p>
+            </div>
+          </div>
+        </section>
+      </div>
+      
+      <!-- Right Column -->
+      <div>
+        <!-- Skills -->
+        <section class="section avoid-break">
+          <h2 class="section-title">Technical Skills</h2>
+          
+          <div class="mb-4">
+            <div class="flex justify-between mb-1">
+              <span class="text-sm font-medium">Python</span>
+              <span class="text-xs text-gray-600">80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 80%"></div>
+            </div>
+          </div>
+          
+          <div class="mb-4">
+            <div class="flex justify-between mb-1">
+              <span class="text-sm font-medium">PHP</span>
+              <span class="text-xs text-gray-600">75%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 75%"></div>
+            </div>
+          </div>
+          
+          <div class="mb-4">
+            <div class="flex justify-between mb-1">
+              <span class="text-sm font-medium">JavaScript</span>
+              <span class="text-xs text-gray-600">85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 85%"></div>
+            </div>
+          </div>
+          
+          <div class="mb-4">
+            <div class="flex justify-between mb-1">
+              <span class="text-sm font-medium">Tailwind CSS</span>
+              <span class="text-xs text-gray-600">90%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 90%"></div>
+            </div>
+          </div>
+          
+          <div class="mb-4">
+            <div class="flex justify-between mb-1">
+              <span class="text-sm font-medium">MySQL</span>
+              <span class="text-xs text-gray-600">80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 80%"></div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Technologies -->
+        <section class="section avoid-break">
+          <h2 class="section-title">Technologies</h2>
+          <div class="flex flex-wrap">
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Next.js</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Git</span>
+            <span class="tag">REST API</span>
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">Tailwind</span>
+            <span class="tag">WordPress</span>
+          </div>
+        </section>
+        
+        <!-- Education -->
+        <section class="section avoid-break">
+          <h2 class="section-title">Education</h2>
+          
+          <div class="timeline-item">
+            <h3 class="font-semibold">Bachelor in Computer Application</h3>
+            <p class="text-sm text-gray-600">2021 - Present</p>
+            <p class="text-sm">Status: In Progress</p>
+          </div>
+          
+          <div class="timeline-item">
+            <h3 class="font-semibold">+2 in Computer Science</h3>
+            <p class="text-sm text-gray-600">2019 - 2021</p>
+            <p class="text-sm">Status: Completed</p>
+          </div>
+        </section>
+        
+        <!-- Languages -->
+        <section class="section avoid-break">
+          <h2 class="section-title">Languages</h2>
+          
+          <div class="mb-2">
+            <div class="flex justify-between mb-1">
+              <span class="text-sm font-medium">English</span>
+              <span class="text-xs text-gray-600">Professional</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 85%"></div>
+            </div>
+          </div>
+          
+          <div class="mb-2">
+            <div class="flex justify-between mb-1">
+              <span class="text-sm font-medium">Nepali</span>
+              <span class="text-xs text-gray-600">Native</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 100%"></div>
+            </div>
+          </div>
+          
+          <div class="mb-2">
+            <div class="flex justify-between mb-1">
+              <span class="text-sm font-medium">Hindi</span>
+              <span class="text-xs text-gray-600">Conversational</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 70%"></div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Interests -->
+        <section class="section avoid-break">
+          <h2 class="section-title">Interests</h2>
+          <div class="flex flex-wrap">
+            <span class="tag">Web Development</span>
+            <span class="tag">AI & Machine Learning</span>
+            <span class="tag">Open Source</span>
+            <span class="tag">Digital Marketing</span>
+            <span class="tag">Technology</span>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
