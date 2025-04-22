@@ -3,383 +3,489 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="music.css">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title>Music Player</title>
+    <title>Portfolio | 3D Experience</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-       
-
-        
-        .card-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 120px 20px 20px;
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
         }
-
-        .card {
-            width: 300px;
-            background-color: #007bff;
-            border-radius: 15px;
-            padding: 1rem;
-            box-shadow: 0 10px 40px -25px rgba(100, 100, 100, .5);
-            border: none;
-            color: #fff;
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
         }
-
-        .card .top {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .card .pfp {
-            height: 50px;
-            width: 50px;
-            background-color: #fff;
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .card .title-1 {
-            font-size: 1.5rem;
-            font-weight: 900;
-        }
-
-        .card .title-2 {
-            font-size: 1rem;
-            color: #b3b3b3;
-        }
-
-        .card .controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
-
-        .card .controls svg {
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .card .controls svg:hover {
-            color: #fff;
-        }
-
-        .card .song-time {
-            display: flex;
-            align-items: center;
-            gap: .5rem;
-        }
-
-        .card .time {
-            width: 85%;
-            background-color: #5e5e5e;
-            height: .4rem;
-            border-radius: 3px;
+        .content {
             position: relative;
+            z-index: 1;
         }
-
-        .card .elapsed {
-            background-color: #fff;
-            height: 100%;
-            width: 0%;
-            border-radius: 3px;
-            transition: width 0.5s;
-        }
-
-        .card .timetext {
-            font-size: .9rem;
-            color: #b3b3b3;
-        }
-
-        .volume {
+        .section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            justify-content: center;
         }
-
-        .volume-slider {
-            -webkit-appearance: none;
-            width: 100px;
-            height: 4px;
-            background: #5e5e5e;
-            border-radius: 5px;
-            outline: none;
-            opacity: 0.7;
-            transition: opacity 0.2s;
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-
-        .volume-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 12px;
-            height: 12px;
-            background: #fff;
-            cursor: pointer;
-            border-radius: 50%;
-        }
-
-        .volume-slider::-moz-range-thumb {
-            width: 12px;
-            height: 12px;
-            background: #fff;
-            cursor: pointer;
-            border-radius: 50%;
-        }
-        .collection-btn{
-            text-align: right;
-            float: right;
-            margin-right: 10px;
-            text-decoration: none;
-            color: #f4f6f8;
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: #2563eb;
         }
     </style>
 </head>
-<body>
-    <header>
-        <a class="navbar-brand text-center" href="#">Prasangapokharel.com.np</a>
-        <a href="index.html" class="collection-btn">
-            Home
-     </a>
+<body class="bg-secondary text-white">
+    <!-- Three.js Canvas -->
+    <canvas id="bg"></canvas>
 
-    </header>
-    <div class="card-container">
-        <!-- Card 1 -->
-        <div class="card">
-            <div class="top">
-                <div class="pfp">
-                    
-                </div>
-                <div class="texts">
-                    <p class="title-1">Dheera Dheera - KGF 2</p>
-                    <p class="title-2">Artist Name</p>
-                </div>
+    <!-- Content -->
+    <div class="content">
+        <!-- Navigation -->
+        <nav class="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center glass">
+            <div class="text-2xl font-bold">Portfolio</div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="hover:text-primary transition-colors">Home</a>
+                <a href="#about" class="hover:text-primary transition-colors">About</a>
+                <a href="#skills" class="hover:text-primary transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-primary transition-colors">Projects</a>
+                <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
             </div>
-            <div class="controls">
-                <i class="fas fa-step-backward"></i>
-                <i class="fas fa-play" onclick="playMusic('dhera.mp3', this.closest('.card'))"></i>
-                <i class="fas fa-step-forward"></i>
-                <div class="volume">
-                    <input type="range" min="0" max="100" value="50" class="volume-slider" id="volume-control" onchange="changeVolume(this.value)">
-                </div>
-                <i class="fas fa-download" onclick="downloadMusic('dhera.mp3')"></i> <span>Download</span>
-            </div>
-            <div class="song-time">
-                <p class="timetext time_now">0:00</p>
-                <div class="time">
-                    <div class="elapsed"></div>
-                </div>
-                <p class="timetext time_full">3:30</p>
-            </div>
-        </div>
-         <!-- Card 1 -->
-         <div class="card">
-            <div class="top">
-                <div class="pfp">
-                    
-                </div>
-                <div class="texts">
-                    <p class="title-1">Dheera Dheera - KGF 2</p>
-                    <p class="title-2">Artist Name</p>
-                </div>
-            </div>
-            <div class="controls">
-                <i class="fas fa-step-backward"></i>
-                <i class="fas fa-play" onclick="playMusic('dhera.mp3', this.closest('.card'))"></i>
-                <i class="fas fa-step-forward"></i>
-                <div class="volume">
-                    <input type="range" min="0" max="100" value="50" class="volume-slider" id="volume-control" onchange="changeVolume(this.value)">
-                </div>
-                <i class="fas fa-download" onclick="downloadMusic('dhera.mp3')"></i> <span>Download</span>
-            </div>
-            <div class="song-time">
-                <p class="timetext time_now">0:00</p>
-                <div class="time">
-                    <div class="elapsed"></div>
-                </div>
-                <p class="timetext time_full">3:30</p>
+            <button class="md:hidden" id="menu-button">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="fixed top-16 left-0 w-full bg-secondary z-40 hidden">
+            <div class="flex flex-col p-4 glass">
+                <a href="#home" class="py-2 hover:text-primary transition-colors">Home</a>
+                <a href="#about" class="py-2 hover:text-primary transition-colors">About</a>
+                <a href="#skills" class="py-2 hover:text-primary transition-colors">Skills</a>
+                <a href="#projects" class="py-2 hover:text-primary transition-colors">Projects</a>
+                <a href="#contact" class="py-2 hover:text-primary transition-colors">Contact</a>
             </div>
         </div>
-         <!-- Card 1 -->
-         <div class="card">
-            <div class="top">
-                <div class="pfp">
+
+        <!-- Hero Section -->
+        <section id="home" class="section flex items-center justify-center">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">Hello, I'm <span class="text-primary">John Doe</span></h1>
+                <p class="text-xl md:text-2xl mb-8">Web Developer & 3D Enthusiast</p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#contact" class="px-6 py-3 bg-primary rounded-full hover:bg-blue-700 transition-colors">Contact Me</a>
+                    <a href="#projects" class="px-6 py-3 border border-white rounded-full hover:bg-white hover:text-secondary transition-colors">View Projects</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="max-w-4xl mx-auto glass p-8">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-primary">About Me</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <p class="mb-4">
+                            I'm a passionate web developer with expertise in creating immersive digital experiences. 
+                            With a strong foundation in both front-end and back-end technologies, I bring creative 
+                            ideas to life through clean, efficient code.
+                        </p>
+                        <p class="mb-4">
+                            My journey in web development began 5 years ago, and since then, I've worked on various 
+                            projects ranging from simple websites to complex web applications. I'm particularly 
+                            interested in 3D web experiences using Three.js.
+                        </p>
+                        <p>
+                            When I'm not coding, you can find me exploring new technologies, contributing to open-source 
+                            projects, or enjoying outdoor activities.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-primary">
+                            <img src="/placeholder.svg?height=256&width=256" alt="Profile" class="w-full h-full object-cover" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="max-w-4xl mx-auto glass p-8">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-primary">Skills & Expertise</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Technical Skills</h3>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span>HTML/CSS</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="progress-bar" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span>JavaScript</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="progress-bar" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span>Three.js</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="progress-bar" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span>Node.js</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="progress-bar" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
                     
-                </div>
-                <div class="texts">
-                    <p class="title-1">Kasari Bhanu</p>
-                    <p class="title-2">Artist Name</p>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Experience</h3>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-medium">Senior Web Developer</h4>
+                            <p class="text-sm text-gray-300">TechCorp Inc. | 2020 - Present</p>
+                            <p class="mt-2">Leading development of interactive web applications with focus on 3D experiences.</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-medium">Frontend Developer</h4>
+                            <p class="text-sm text-gray-300">Digital Solutions | 2018 - 2020</p>
+                            <p class="mt-2">Developed responsive websites and implemented interactive features.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-medium">Web Design Intern</h4>
+                            <p class="text-sm text-gray-300">Creative Studio | 2017 - 2018</p>
+                            <p class="mt-2">Assisted in designing and implementing website layouts.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="controls">
-                <i class="fas fa-step-backward"></i>
-                <i class="fas fa-play" onclick="playMusic('Kasari Bhanu - Official Lyrical Video - Swoopna Suman - Arbitrary Originals.mp3', this.closest('.card'))"></i>
-                <i class="fas fa-step-forward"></i>
-                <div class="volume">
-                    <input type="range" min="0" max="100" value="50" class="volume-slider" id="volume-control" onchange="changeVolume(this.value)">
-                </div>
-                <i class="fas fa-download" onclick="downloadMusic('Kasari Bhanu - Official Lyrical Video - Swoopna Suman - Arbitrary Originals.mp3')"></i> <span>Download</span>
-            </div>
-            <div class="song-time">
-                <p class="timetext time_now">0:00</p>
-                <div class="time">
-                    <div class="elapsed"></div>
-                </div>
-                <p class="timetext time_full">3:30</p>
-            </div>
-        </div>
-         <!-- Card 1 -->
-         <div class="card">
-            <div class="top">
-                <div class="pfp">
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="max-w-4xl mx-auto glass p-8">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-primary">Featured Projects</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-secondary rounded-lg overflow-hidden">
+                        <img src="/placeholder.svg?height=200&width=400" alt="Project 1" class="w-full h-48 object-cover" />
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-2">3D Product Configurator</h3>
+                            <p class="text-gray-300 mb-4">An interactive 3D product configurator built with Three.js that allows users to customize products in real-time.</p>
+                            <div class="flex space-x-2">
+                                <span class="px-2 py-1 bg-blue-900 rounded-full text-xs">Three.js</span>
+                                <span class="px-2 py-1 bg-blue-900 rounded-full text-xs">JavaScript</span>
+                                <span class="px-2 py-1 bg-blue-900 rounded-full text-xs">WebGL</span>
+                            </div>
+                        </div>
+                    </div>
                     
-                </div>
-                <div class="texts">
-                    <p class="title-1">Namo Namo</p>
-                    <p class="title-2">Artist Name</p>
-                </div>
-            </div>
-            <div class="controls">
-                <i class="fas fa-step-backward"></i>
-                <i class="fas fa-play" onclick="playMusic('Namo Namo - Lyrical  Kedarnath  Sushant Rajput  Sara Ali Khan  Amit Trivedi  Amitabh B.mp3', this.closest('.card'))"></i>
-                <i class="fas fa-step-forward"></i>
-                <div class="volume">
-                    <input type="range" min="0" max="100" value="50" class="volume-slider" id="volume-control" onchange="changeVolume(this.value)">
-                </div>
-                <i class="fas fa-download" onclick="downloadMusic('Namo Namo - Lyrical  Kedarnath  Sushant Rajput  Sara Ali Khan  Amit Trivedi  Amitabh B.mp3')"></i> <span>Download</span>
-            </div>
-            <div class="song-time">
-                <p class="timetext time_now">0:00</p>
-                <div class="time">
-                    <div class="elapsed"></div>
-                </div>
-                <p class="timetext time_full">3:30</p>
-            </div>
-        </div>
-         <!-- Card 1 -->
-         <div class="card">
-            <div class="top">
-                <div class="pfp">
+                    <div class="bg-secondary rounded-lg overflow-hidden">
+                        <img src="/placeholder.svg?height=200&width=400" alt="Project 2" class="w-full h-48 object-cover" />
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-2">Interactive Portfolio</h3>
+                            <p class="text-gray-300 mb-4">A creative portfolio website with 3D elements and animations to showcase projects in an engaging way.</p>
+                            <div class="flex space-x-2">
+                                <span class="px-2 py-1 bg-blue-900 rounded-full text-xs">Three.js</span>
+                                <span class="px-2 py-1 bg-blue-900 rounded-full text-xs">HTML/CSS</span>
+                                <span class="px-2 py-1 bg-blue-900 rounded-full text-xs">GSAP</span>
+                            </div>
+                        </div>
+                    </div>
                     
-                </div>
-                <div class="texts">
-                    <p class="title-1">Dheera Dheera - KGF 2</p>
-                    <p class="title-2">Artist Name</p>
-                </div>
-            </div>
-            <div class="controls">
-                <i class="fas fa-step-backward"></i>
-                <i class="fas fa-play" onclick="playMusic('dhera.mp3', this.closest('.card'))"></i>
-                <i class="fas fa-step-forward"></i>
-                <div class="volume">
-                    <input type="range" min="0" max="100" value="50" class="volume-slider" id="volume-control" onchange="changeVolume(this.value)">
-                </div>
-                <i class="fas fa-download" onclick="downloadMusic('dhera.mp3')"></i> <span>Download</span>
-            </div>
-            <div class="song-time">
-                <p class="timetext time_now">0:00</p>
-                <div class="time">
-                    <div class="elapsed"></div>
-                </div>
-                <p class="timetext time_full">3:30</p>
-            </div>
-        </div>
-         <!-- Card 1 -->
-         <div class="card">
-            <div class="top">
-                <div class="pfp">
+                    <div class="bg-secondary rounded-lg overflow-hidden">
+                        <img src="/placeholder.svg?height=200&width=400" alt="Project 3" class="w-full h-48 object-cover" />
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-2">3D Data Visualization</h3>
+                            <p class="text-gray-300 mb-4">A data visualization tool that presents complex information in an intuitive 3D format.</p>
+                            <div class="flex space-x-2">
+                                <span class="px-2 py-1 bg-blue-900 rounded-full text-xs">Three.js</span>
+                                <span class="px-2 py-1 bg-blue-900 rounded-full text-xs">D3.js</span>
+                                <span class="px-2 py-1 bg-blue-900 rounded-full text-xs">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
                     
-                </div>
-                <div class="texts">
-                    <p class="title-1">Dheera Dheera - KGF 2</p>
-                    <p class="title-2">Artist Name</p>
+                    <div class="bg-secondary rounded-lg overflow-hidden">
+                        <img src="/placeholder.svg?height=200&width=400" alt="Project 4" class="w-full h-48 object-cover" />
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-2">Virtual Gallery</h3>
+                            <p class="text-gray-300 mb-4">A virtual art gallery where visitors can explore artwork in a 3D environment.</p>
+                            <div class="flex space-x-2">
+                                <span class="px-2 py-1 bg-blue-900 rounded-full text-xs">Three.js</span>
+                                <span class="px-2 py-1 bg-blue-900 rounded-full text-xs">WebGL</span>
+                                <span class="px-2 py-1 bg-blue-900 rounded-full text-xs">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="controls">
-                <i class="fas fa-step-backward"></i>
-                <i class="fas fa-play" onclick="playMusic('dhera.mp3', this.closest('.card'))"></i>
-                <i class="fas fa-step-forward"></i>
-                <div class="volume">
-                    <input type="range" min="0" max="100" value="50" class="volume-slider" id="volume-control" onchange="changeVolume(this.value)">
-                </div>
-                <i class="fas fa-download" onclick="downloadMusic('dhera.mp3')"></i> <span>Download</span>
-            </div>
-            <div class="song-time">
-                <p class="timetext time_now">0:00</p>
-                <div class="time">
-                    <div class="elapsed"></div>
-                </div>
-                <p class="timetext time_full">3:30</p>
-            </div>
-        </div>
-         <!-- Card 1 -->
-         <div class="card">
-            <div class="top">
-                <div class="pfp">
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="max-w-4xl mx-auto glass p-8">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-primary">Get In Touch</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <p class="mb-6">
+                            I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.
+                        </p>
+                        
+                        <div class="mb-4 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-3 text-primary">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                            </svg>
+                            <span>contact@example.com</span>
+                        </div>
+                        
+                        <div class="mb-4 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-3 text-primary">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                            </svg>
+                            <span>+1 (123) 456-7890</span>
+                        </div>
+                        
+                        <div class="mb-6 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-3 text-primary">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                            </svg>
+                            <span>New York, NY</span>
+                        </div>
+                        
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-white hover:text-primary transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" />
+                                </svg>
+                            </a>
+                            <a href="#" class="text-white hover:text-primary transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+                                </svg>
+                            </a>
+                            <a href="#" class="text-white hover:text-primary transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
                     
-                </div>
-                <div class="texts">
-                    <p class="title-1">Dheera Dheera - KGF 2</p>
-                    <p class="title-2">Artist Name</p>
-                </div>
-            </div>
-            <div class="controls">
-                <i class="fas fa-step-backward"></i>
-                <i class="fas fa-play" onclick="playMusic('dhera.mp3', this.closest('.card'))"></i>
-                <i class="fas fa-step-forward"></i>
-                <div class="volume">
-                    <input type="range" min="0" max="100" value="50" class="volume-slider" id="volume-control" onchange="changeVolume(this.value)">
-                </div>
-                <i class="fas fa-download" onclick="downloadMusic('dhera.mp3')"></i> <span>Download</span>
-            </div>
-            <div class="song-time">
-                <p class="timetext time_now">0:00</p>
-                <div class="time">
-                    <div class="elapsed"></div>
-                </div>
-                <p class="timetext time_full">3:30</p>
-            </div>
-        </div>
-         <!-- Card 1 -->
-         <div class="card">
-            <div class="top">
-                <div class="pfp">
-                    
-                </div>
-                <div class="texts">
-                    <p class="title-1">Tum Prem Ho</p>
-                    <p class="title-2">Artist Name</p>
+                    <div>
+                        <form>
+                            <div class="mb-4">
+                                <label for="name" class="block mb-2">Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 bg-secondary border border-gray-700 rounded-lg focus:outline-none focus:border-primary" />
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="email" class="block mb-2">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 bg-secondary border border-gray-700 rounded-lg focus:outline-none focus:border-primary" />
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="message" class="block mb-2">Message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 bg-secondary border border-gray-700 rounded-lg focus:outline-none focus:border-primary"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full py-3 bg-primary rounded-lg hover:bg-blue-700 transition-colors">Send Message</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="controls">
-                <i class="fas fa-step-backward"></i>
-                <i class="fas fa-play" onclick="playMusic('Tum Prem Ho - Reprise  Lyrical Video  Radha Krishn  MOhit Lalwani  Surya Raj Kamal.mp3', this.closest('.card'))"></i>
-                <i class="fas fa-step-forward"></i>
-                <div class="volume">
-                    <input type="range" min="0" max="100" value="50" class="volume-slider" id="volume-control" onchange="changeVolume(this.value)">
-                </div>
-                <i class="fas fa-download" onclick="downloadMusic('Tum Prem Ho - Reprise  Lyrical Video  Radha Krishn  MOhit Lalwani  Surya Raj Kamal.mp3')"></i> <span>Download</span>
-            </div>
-            <div class="song-time">
-                <p class="timetext time_now">0:00</p>
-                <div class="time">
-                    <div class="elapsed"></div>
-                </div>
-                <p class="timetext time_full">3:30</p>
-            </div>
-        </div>
-        
-        <!-- Add more cards similarly for other songs -->
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-8 text-center">
+            <p>© 2023 Portfolio. All rights reserved.</p>
+        </footer>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="music.js"></script>
+    <!-- Three.js and main script -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
+    <script>
+        // Mobile menu toggle
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Three.js Scene
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({
+            canvas: document.querySelector('#bg'),
+            antialias: true,
+            alpha: true
+        });
+
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.position.setZ(30);
+
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+
+        const pointLight = new THREE.PointLight(0x2563eb, 2);
+        pointLight.position.set(5, 5, 5);
+        scene.add(pointLight);
+
+        // Stars
+        function addStar() {
+            const geometry = new THREE.SphereGeometry(0.25, 24, 24);
+            const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+            const star = new THREE.Mesh(geometry, material);
+
+            const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100));
+            star.position.set(x, y, z);
+            scene.add(star);
+        }
+
+        Array(200).fill().forEach(addStar);
+
+        // Background
+        const spaceTexture = new THREE.Color(0x0f172a);
+        scene.background = spaceTexture;
+
+        // Torus
+        const torusGeometry = new THREE.TorusGeometry(10, 3, 16, 100);
+        const torusMaterial = new THREE.MeshStandardMaterial({ color: 0x2563eb, wireframe: true });
+        const torus = new THREE.Mesh(torusGeometry, torusMaterial);
+        scene.add(torus);
+
+        // Floating cubes
+        function createCube() {
+            const geometry = new THREE.BoxGeometry(2, 2, 2);
+            const material = new THREE.MeshStandardMaterial({ 
+                color: 0x2563eb,
+                wireframe: true
+            });
+            const cube = new THREE.Mesh(geometry, material);
+            
+            const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(50));
+            cube.position.set(x, y, z);
+            
+            cube.rotation.x = Math.random() * Math.PI;
+            cube.rotation.y = Math.random() * Math.PI;
+            
+            scene.add(cube);
+            return cube;
+        }
+
+        const cubes = Array(15).fill().map(createCube);
+
+        // Controls
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.enableZoom = false;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.5;
+
+        // Animation Loop
+        function animate() {
+            requestAnimationFrame(animate);
+
+            torus.rotation.x += 0.01;
+            torus.rotation.y += 0.005;
+            torus.rotation.z += 0.01;
+
+            cubes.forEach((cube, i) => {
+                cube.rotation.x += 0.003 * (i % 3 + 1);
+                cube.rotation.y += 0.003 * (i % 3 + 1);
+            });
+
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Handle resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Scroll animation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                mobileMenu.classList.add('hidden');
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            
+            // Move camera slightly based on scroll
+            camera.position.z = 30 - scrollY * 0.01;
+            
+            // Rotate torus based on scroll
+            torus.rotation.x = scrollY * 0.001;
+            torus.rotation.y = scrollY * 0.001;
+        });
+    </script>
 </body>
 </html>
+
