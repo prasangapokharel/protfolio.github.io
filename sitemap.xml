@@ -1,21 +1,208 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
   <url>
     <loc>https://prasangapokharel.com.np/</loc>
-    <lastmod>2024-12-19</lastmod>
+    <lastmod>2024-01-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  
+  <!-- Python Developer Page -->
+  <url>
+    <loc>https://prasangapokharel.com.np/python-developer-usa-australia</loc>
+    <lastmod>2024-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Next.js Developer Page -->
+  <url>
+    <loc>https://prasangapokharel.com.np/nextjs-developer-usa-australia</loc>
+    <lastmod>2024-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- FastAPI Developer Page -->
+  <url>
+    <loc>https://prasangapokharel.com.np/fastapi-developer-usa-australia</loc>
+    <lastmod>2024-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Blockchain Developer Page -->
+  <url>
+    <loc>https://prasangapokharel.com.np/blockchain-developer-usa-australia</loc>
+    <lastmod>2024-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- AI Developer Page -->
+  <url>
+    <loc>https://prasangapokharel.com.np/ai-developer-usa-australia</loc>
+    <lastmod>2024-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Full-Stack Developer Page -->
+  <url>
+    <loc>https://prasangapokharel.com.np/full-stack-developer-usa-australia</loc>
+    <lastmod>2024-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Django Developer Page -->
+  <url>
+    <loc>https://prasangapokharel.com.np/django-developer-usa-australia</loc>
+    <lastmod>2024-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Web3 Developer Page -->
+  <url>
+    <loc>https://prasangapokharel.com.np/web3-developer-usa-australia</loc>
+    <lastmod>2024-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Machine Learning Developer Page -->
+  <url>
+    <loc>https://prasangapokharel.com.np/machine-learning-developer-usa-australia</loc>
+    <lastmod>2024-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- DeFi Developer Page -->
+  <url>
+    <loc>https://prasangapokharel.com.np/defi-developer-usa-australia</loc>
+    <lastmod>2024-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- NFT Developer Page -->
+  <url>
+    <loc>https://prasangapokharel.com.np/nft-developer-usa-australia</loc>
+    <lastmod>2024-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Software Developer Page -->
+  <url>
+    <loc>https://prasangapokharel.com.np/software-developer-usa-australia</loc>
+    <lastmod>2024-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Resume Page -->
   <url>
     <loc>https://prasangapokharel.com.np/resume.html</loc>
-    <lastmod>2024-12-19</lastmod>
+    <lastmod>2024-01-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  
+  <!-- Projects Page -->
   <url>
     <loc>https://prasangapokharel.com.np/project.html</loc>
-    <lastmod>2024-12-19</lastmod>
+    <lastmod>2024-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Existing SEO Pages -->
+  <url>
+    <loc>https://prasangapokharel.com.np/seo/python-developer-usa.html</loc>
+    <lastmod>2024-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://prasangapokharel.com.np/seo/nextjsdeveloper.html</loc>
+    <lastmod>2024-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://prasangapokharel.com.np/seo/developerinnepal.html</loc>
+    <lastmod>2024-01-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- Finance Blogs -->
+  <url>
+    <loc>https://prasangapokharel.com.np/blogs/latestnews/finance/market-crash-2026-prediction.html</loc>
+    <lastmod>2024-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://prasangapokharel.com.np/blogs/latestnews/finance/silver-price-forecast-2026.html</loc>
+    <lastmod>2024-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://prasangapokharel.com.np/blogs/latestnews/finance/stock-market-today-analysis.html</loc>
+    <lastmod>2024-02-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://prasangapokharel.com.np/blogs/latestnews/finance/crypto-market-update-2025.html</loc>
+    <lastmod>2024-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://prasangapokharel.com.np/blogs/latestnews/finance/inflation-interest-rates-impact.html</loc>
+    <lastmod>2024-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- AI Blogs -->
+  <url>
+    <loc>https://prasangapokharel.com.np/blogs/latestnews/ai/ai-impact-election-2024.html</loc>
+    <lastmod>2024-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://prasangapokharel.com.np/blogs/latestnews/ai/artificial-intelligence-market-trends.html</loc>
+    <lastmod>2024-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://prasangapokharel.com.np/blogs/latestnews/ai/deepfake-technology-democracy.html</loc>
+    <lastmod>2024-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://prasangapokharel.com.np/blogs/latestnews/ai/generative-ai-future-growth.html</loc>
+    <lastmod>2024-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://prasangapokharel.com.np/blogs/latestnews/ai/ai-regulation-policy-news.html</loc>
+    <lastmod>2024-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
