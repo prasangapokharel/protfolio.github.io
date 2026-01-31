@@ -233,4 +233,22 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://prasangapokharel.com.np/blogs/latestnews/government/quantum-threat-government-encryption-2026.html</loc>
+    <lastmod>2026-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://prasangapokharel.com.np/blogs/latestnews/government/ai-automation-public-sector-workforce-2026.html</loc>
+    <lastmod>2026-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://prasangapokharel.com.np/blogs/latestnews/government/ai-legal-ethics-courtroom-2026.html</loc>
+    <lastmod>2026-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
