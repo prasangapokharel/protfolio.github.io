@@ -9,6 +9,7 @@ Disallow: /admin/
 Disallow: /private/
 Disallow: /.git/
 Disallow: /node_modules/
+Disallow: /temp/
 
 # Allow all search engines to crawl
 Crawl-delay: 1
